@@ -9,7 +9,7 @@ export const CONTACT_DATA: ContactInfo = {
   secondaryEmail: "priscillacahinoo@gmail.com",
   linkedin: "https://www.linkedin.com/in/priscilla-cahino/",
   github: "https://github.com/Priscillacahino",
-  whatsappUrl: "https://wa.me/5583999553329?text=Ol%C3%A1%20Priscilla!%20Vi%20seu%20site%20e%20portf%C3%B3lio%20profissional.",
+  whatsappUrl: "https://api.whatsapp.com/send?phone=558399553329&text=Ol%C3%A1%20Priscilla!%20Vi%20seu%20portf%C3%B3lio%20profissional.",
   location: "João Pessoa - PB, Brasil"
 };
 
