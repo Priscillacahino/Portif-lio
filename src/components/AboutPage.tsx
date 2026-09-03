@@ -72,33 +72,52 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
             {/* Core Narrative Split: Identity/Actions (Left) & Value Proposition/Contact (Right) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-[#333]">
               
-              {/* Left Column: Identity, Credentials & Primary Action */}
+              {/* Left Column: Portrait Photo & Identity/Profile below it */}
               <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 bg-[#161616] flex flex-col justify-between space-y-8">
-                <div>
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#888] block mb-3">
-                    Perfil Profissional
-                  </span>
-                  <h1 className="text-5xl sm:text-6xl font-serif-artistic italic mb-1 leading-none text-[#f5f5f5]">
-                    Priscilla
-                  </h1>
-                  <h1 className="text-5xl sm:text-6xl font-serif-artistic italic mb-6 leading-none text-[#f5f5f5]">
-                    Cahino
-                  </h1>
-                  
-                  {/* Hallmark Artistic Accent Divider */}
-                  <div className="h-[2px] w-20 bg-[#FF6B35] mb-6"></div>
-                  
-                  <div className="space-y-2">
-                    <p className="text-xs uppercase tracking-[0.18em] text-[#eee] font-semibold flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#FF6B35]"></span>
-                      Customer Experience (CS/CX)
-                    </p>
-                    <p className="text-xs uppercase tracking-[0.18em] text-[#aaa]">
-                      Data Analysis & SQL Specialist
-                    </p>
-                    <p className="text-xs uppercase tracking-[0.18em] text-[#888]">
-                      UX/UI Designer & ADS Student
-                    </p>
+                
+                {/* Retrato Profissional */}
+                <div className="space-y-6">
+                  <div className="relative overflow-hidden border border-[#333] bg-[#121212] group">
+                    <img
+                      src="/priscilla-cahino-perfil.png"
+                      alt="Priscilla Cahino - Retrato Profissional"
+                      className="w-full h-auto object-cover max-h-[380px] sm:max-h-[420px] object-top transition-transform duration-500 group-hover:scale-102"
+                      referrerPolicy="no-referrer"
+                      loading="eager"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = "https://i.ibb.co/tTDMvp6L/retrato-profissional-2.png";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-transparent to-transparent opacity-30 pointer-events-none"></div>
+                  </div>
+
+                  {/* Perfil Profissional logo abaixo da imagem */}
+                  <div>
+                    <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#888] block mb-2">
+                      Perfil Profissional
+                    </span>
+                    <h1 className="text-4xl sm:text-5xl font-serif-artistic italic mb-1 leading-none text-[#f5f5f5]">
+                      Priscilla
+                    </h1>
+                    <h1 className="text-4xl sm:text-5xl font-serif-artistic italic mb-5 leading-none text-[#f5f5f5]">
+                      Cahino
+                    </h1>
+                    
+                    {/* Hallmark Artistic Accent Divider */}
+                    <div className="h-[2px] w-20 bg-[#FF6B35] mb-5"></div>
+                    
+                    <div className="space-y-2">
+                      <p className="text-xs uppercase tracking-[0.18em] text-[#eee] font-semibold flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-[#FF6B35]"></span>
+                        Customer Experience (CS/CX)
+                      </p>
+                      <p className="text-xs uppercase tracking-[0.18em] text-[#aaa]">
+                        Data Analysis & SQL Specialist
+                      </p>
+                      <p className="text-xs uppercase tracking-[0.18em] text-[#888]">
+                        UX/UI Designer & ADS Student
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -139,7 +158,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                 </div>
               </div>
 
-              {/* Right Column: Narrative Executive Summary & Direct Contact */}
+              {/* Right Column: Apresentação Profissional do lado da imagem e do perfil */}
               <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 bg-[#181818] flex flex-col justify-between space-y-8">
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-2">
@@ -148,11 +167,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                     </span>
                   </div>
 
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-artistic italic text-white leading-tight">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif-artistic italic text-white leading-tight">
                     Conectando experiência, pessoas e tecnologia.
                   </h2>
 
-                  <div className="space-y-4 text-[#bbb] text-base leading-relaxed font-light">
+                  <div className="space-y-5 text-[#bbb] text-base sm:text-lg leading-relaxed font-light">
                     <p>
                       Minha atuação reúne relacionamento com clientes, visão de processos e resolução de problemas, agora ampliada por conhecimentos em Análise de Dados, UX/UI, desenvolvimento de sistemas e Inteligência Artificial.
                     </p>
@@ -163,10 +182,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                 </div>
 
                 {/* Direct Contact Bar */}
-                <div className="p-4 border border-[#333] bg-[#141414] flex flex-wrap items-center justify-between gap-3 text-xs text-[#888]">
+                <div className="p-4 sm:p-5 border border-[#333] bg-[#141414] flex flex-wrap items-center justify-between gap-3 text-xs text-[#888]">
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-[#FF6B35] shrink-0" />
-                    <span className="font-mono text-[#ddd]">{CONTACT_DATA.email}</span>
+                    <span className="font-mono text-[#ddd] text-xs sm:text-sm">{CONTACT_DATA.email}</span>
                   </div>
 
                   <div className="flex items-center gap-3">
