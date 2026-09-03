@@ -56,7 +56,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
               Projetos Acadêmicos & GitHub
             </h1>
             <p className="text-[#aaa] text-base sm:text-lg max-w-3xl mt-3 leading-relaxed font-light">
-              Trabalhos práticos desenvolvidos durante meus estudos em Análise e Desenvolvimento de Sistemas (ADS), workshops imersivos e desafios reais na Fábrica de Software.
+              Projetos desenvolvidos durante minha formação e estudos em Análise e Desenvolvimento de Sistemas (ADS), workshops imersivos e desafios na Fábrica de Software.
             </p>
           </div>
 
@@ -331,7 +331,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
                 Contato & Conexão
               </span>
               <h2 className="font-serif-artistic italic text-2xl sm:text-3xl text-white font-normal">
-                Vamos conversar sobre oportunidades e novos projetos?
+                Aberta a novas oportunidades, aprendizados e conexões profissionais
               </h2>
               <p className="text-[#aaa] text-sm leading-relaxed max-w-2xl font-light">
                 Estou aberta a propostas para Customer Success, CX, análise de dados e desafios em tecnologia. Fique à vontade para entrar em contato pelos canais diretos abaixo.

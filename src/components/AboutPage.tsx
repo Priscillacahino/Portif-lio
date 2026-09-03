@@ -65,7 +65,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                 </span>
               </div>
               <span className="text-[10px] uppercase font-mono tracking-widest text-[#666] hidden sm:block">
-                Campina Grande - PB
+                João Pessoa - PB
               </span>
             </div>
 
@@ -149,12 +149,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                   </div>
 
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-artistic italic text-white leading-tight">
-                    Conectando mais de 18 anos de relacionamento com clientes à tecnologia, análise de dados e design centrado em pessoas.
+                    Conectando experiência, pessoas e tecnologia.
                   </h2>
 
-                  <p className="text-[#bbb] text-base leading-relaxed font-light">
-                    Construí uma sólida carreira resolvendo problemas, compreendendo dores e mapeando jornadas nos setores bancário e imobiliário. Hoje, amplio essa experiência prática com conhecimentos consolidados em Análise de Dados, UX/UI, desenvolvimento em Java/Python e Inteligência Artificial.
-                  </p>
+                  <div className="space-y-4 text-[#bbb] text-base leading-relaxed font-light">
+                    <p>
+                      Minha atuação reúne relacionamento com clientes, visão de processos e resolução de problemas, agora ampliada por conhecimentos em Análise de Dados, UX/UI, desenvolvimento de sistemas e Inteligência Artificial.
+                    </p>
+                    <p>
+                      Busco transformar essa combinação em soluções mais claras, funcionais e orientadas às necessidades de quem utiliza produtos e serviços.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Direct Contact Bar */}
@@ -211,7 +216,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                     <span>Customer Success & CX</span>
                   </div>
                   <p className="text-xs text-[#888] font-light leading-relaxed">
-                    18+ anos em processos, relacionamento consultivo e retenção.
+                    18+ anos de experiência em relacionamento com clientes, processos, atendimento e resolução de demandas.
                   </p>
                 </div>
 
@@ -221,7 +226,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                     <span>Análise de Dados & SQL</span>
                   </div>
                   <p className="text-xs text-[#888] font-light leading-relaxed">
-                    MySQL, Python (Pandas), Machine Learning e Power BI executivo.
+                    Projetos acadêmicos utilizando SQL, MySQL, Python e Power BI.
                   </p>
                 </div>
 
@@ -231,7 +236,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                     <span>UX/UI & Usabilidade</span>
                   </div>
                   <p className="text-xs text-[#888] font-light leading-relaxed">
-                    Prototipagem no Figma, pesquisa com usuários e design funcional.
+                    Prototipação no Figma, fluxos de usuário, usabilidade e design de interfaces.
                   </p>
                 </div>
 
@@ -241,7 +246,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                     <span>Inteligência Artificial</span>
                   </div>
                   <p className="text-xs text-[#888] font-light leading-relaxed">
-                    Apoio no fluxo diário, ideação, automação e aceleração técnica.
+                    Uso da IA como apoio aos estudos, ideação, desenvolvimento e produtividade.
                   </p>
                 </div>
               </div>
@@ -348,7 +353,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
               Destaques Selecionados
             </h3>
             <p className="text-[#888] text-xs sm:text-sm mt-1 font-light">
-              Casos práticos desenvolvidos durante os estudos em Análise e Desenvolvimento de Sistemas.
+              Projetos desenvolvidos durante minha formação e estudos em Análise e Desenvolvimento de Sistemas.
             </p>
           </div>
 
@@ -458,7 +463,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                 Contato & Conexão
               </span>
               <h2 className="font-serif-artistic italic text-2xl sm:text-3xl text-white font-normal">
-                Pronta para novas oportunidades, projetos e trocas profissionais
+                Aberta a novas oportunidades, aprendizados e conexões profissionais
               </h2>
               <p className="text-[#aaa] text-sm leading-relaxed max-w-2xl font-light">
                 Seja para posições em Customer Success/CX, oportunidades na área de Tecnologia e Análise de Dados ou projetos colaborativos, estou à disposição para conversar.

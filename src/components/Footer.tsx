@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectPage }) => {
         <div className="mt-8 pt-6 border-t border-[#222] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#555]">
           <p>© {new Date().getFullYear()} {CONTACT_DATA.name}. Todos os direitos reservados.</p>
           <p>
-            Campina Grande - PB • Portfólio Profissional
+            João Pessoa - PB • Portfólio Profissional
           </p>
         </div>
       </div>

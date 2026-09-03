@@ -10,7 +10,7 @@ export const CONTACT_DATA: ContactInfo = {
   linkedin: "https://www.linkedin.com/in/priscilla-cahino/",
   github: "https://github.com/Priscillacahino",
   whatsappUrl: "https://wa.me/5583999553329?text=Ol%C3%A1%20Priscilla!%20Vi%20seu%20site%20e%20portf%C3%B3lio%20profissional.",
-  location: "Paraíba, Brasil"
+  location: "João Pessoa - PB, Brasil"
 };
 
 export const ACADEMIC_PROJECTS: AcademicProject[] = [
@@ -20,15 +20,15 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
     subtitle: "Análise de Dados e Risco de Inadimplência",
     category: "data",
     categoryLabel: "Análise de Dados & BI",
-    summary: "Modelagem de banco de dados, SQL, análise exploratória em Python com Machine Learning e criação de dashboard executivo no Power BI.",
-    description: "Projeto desenvolvido como desafio final de workshop, simulando o cenário completo de uma clínica de saúde que precisa organizar, sanear e extrair inteligência dos seus dados operacionais e financeiros. Reuniu etapas completas: desde o modelo relacional em MySQL até algoritmos preditivos e dashboards para a gestão.",
+    summary: "Modelagem de banco de dados, SQL, análise exploratória em Python, aplicação de conceitos de Machine Learning e criação de dashboard no Power BI.",
+    description: "Projeto desenvolvido como desafio final de workshop, reunindo modelagem de banco de dados e SQL, análise exploratória em Python, aplicação de conceitos de Machine Learning e criação de dashboard no Power BI para tomada de decisão clínica e financeira.",
     image: "/projects/clinicacare.png",
     technologies: ["SQL", "MySQL", "Python", "Pandas", "Machine Learning", "Power BI", "Modelagem Relacional"],
     highlights: [
       "Estruturação do modelo lógico e manipulação em banco MySQL",
-      "Análise da taxa de comparecimento e cancelamentos em consultas",
-      "Identificação de padrões de inadimplência e dias médios de atraso por tipo de plano",
-      "Dashboard dinâmico no Power BI para tomada de decisão clínica e financeira"
+      "Análise exploratória em Python e estudo de taxas de cancelamento/comparecimento",
+      "Aplicação de conceitos de Machine Learning para previsão de padrões e inadimplência",
+      "Criação de dashboard executivo no Power BI para gestão e tomada de decisão"
     ],
     githubUrl: "https://github.com/Priscillacahino/Desafio_Final_WKS_26.2--Cl-nicaCare",
     featured: true
@@ -39,15 +39,15 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
     subtitle: "Plataforma de Capacitação & Interface UX/UI",
     category: "ux-ui",
     categoryLabel: "UX/UI Design & Produto",
-    summary: "Prototipação de telas de alta fidelidade, arquitetura de fluxos de usuário e usabilidade no âmbito da Fábrica de Software acadêmica.",
-    description: "Projeto desenvolvido com o propósito de oferecer uma plataforma intuitiva de apoio e capacitação na área administrativa. Atuação direta na prototipação das telas, estruturação dos fluxos cognitivos, organização visual e experiência de navegação, aplicando heurísticas consagradas de usabilidade.",
+    summary: "Projeto desenvolvido no contexto da Fábrica de Software da UNIPÊ, no qual fui responsável pela prototipação das telas e construção de fluxos e interfaces no Figma.",
+    description: "Projeto desenvolvido no contexto da Fábrica de Software da UNIPÊ, no qual fui responsável pela prototipação das telas e construção de fluxos e interfaces no Figma.",
     image: "/projects/adm4all.png",
     technologies: ["UX/UI Design", "Figma", "Prototipação", "Design System", "Arquitetura de Informação", "Usabilidade"],
     highlights: [
-      "Construção de fluxos completos de onboarding e aprendizado",
-      "Prototipação interativa com foco em clareza, acessibilidade e agilidade",
-      "Aplicação de princípios de Customer Experience (CX) à interface do usuário",
-      "Plataforma disponibilizada e implementada em projeto de extensão"
+      "Responsável pela prototipação completa das telas e interfaces no Figma",
+      "Construção de fluxos de usuário intuitivos, claros e acessíveis",
+      "Aplicação de princípios de Usabilidade e Customer Experience (CX)",
+      "Projeto concebido e desenvolvido no ambiente da Fábrica de Software da UNIPÊ"
     ],
     githubUrl: "https://github.com/Priscillacahino/Fabrica-de-Software---Adm4All",
     liveUrl: "https://adm4all.extensao-fs.com.br/",
@@ -95,27 +95,27 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
 
 export const SKILL_PILLARS = [
   {
-    title: "Atendimento & CS/CX",
+    title: "Customer Success & CX",
     period: "18+ anos de trajetória",
-    description: "Sólida vivência nos setores bancário e imobiliário. Foco contínuo na jornada do cliente, relacionamento humanizado e resolução ágil de demandas operacionais e financeiras.",
-    badge: "Visão de Negócio"
+    description: "18+ anos de experiência em relacionamento com clientes, processos, atendimento e resolução de demandas.",
+    badge: "Experiência Profissional"
   },
   {
-    title: "Análise de Dados & BI",
-    period: "Formação em ADS & Workshops",
-    description: "Consultas SQL em MySQL, tratamento e modelagem preditiva em Python (Pandas e Machine Learning) e dashboards estratégicos no Power BI.",
-    badge: "Tomada de Decisão"
+    title: "Análise de Dados & SQL",
+    period: "Formação em ADS & Prática",
+    description: "Projetos acadêmicos utilizando SQL, MySQL, Python e Power BI.",
+    badge: "Projetos Acadêmicos"
   },
   {
-    title: "UX/UI Design & Interfaces",
+    title: "UX/UI & Usabilidade",
     period: "Prototipação no Figma",
-    description: "Criação de wireframes, fluxos de navegação intuitivos e protótipos de alta fidelidade que transformam regras complexas em interfaces simples e agradáveis.",
-    badge: "Foco no Usuário"
+    description: "Prototipação no Figma, fluxos de usuário, usabilidade e design de interfaces.",
+    badge: "Design de Interface"
   },
   {
-    title: "Inteligência Artificial Aplicada",
-    period: "Acelerador no dia a dia",
-    description: "Uso estratégico de ferramentas de IA para estudos, organização de raciocínio, refinamento de textos, ideação e apoio na aceleração do código.",
-    badge: "Inovação Prática"
+    title: "Inteligência Artificial",
+    period: "Apoio e Produtividade",
+    description: "Uso da IA como apoio aos estudos, ideação, desenvolvimento e produtividade.",
+    badge: "Apoio & Inovação"
   }
 ];
