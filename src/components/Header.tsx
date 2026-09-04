@@ -76,21 +76,6 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="leading-none select-none text-base sm:text-lg" role="img" aria-hidden="true">🇧🇷</span>
               </button>
 
-              {/* United States 🇺🇸 */}
-              <button
-                id="lang-en"
-                onClick={() => onSelectLanguage('en')}
-                title="English"
-                aria-label="Select English language"
-                className={`flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 text-base transition-all cursor-pointer ${
-                  currentLanguage === 'en'
-                    ? 'bg-[#FF6B35] shadow-sm scale-105'
-                    : 'hover:bg-[#252525] opacity-70 hover:opacity-100'
-                }`}
-              >
-                <span className="leading-none select-none text-base sm:text-lg" role="img" aria-hidden="true">🇺🇸</span>
-              </button>
-
               {/* España 🇪🇸 */}
               <button
                 id="lang-es"

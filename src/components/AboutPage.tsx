@@ -90,7 +90,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 <div className="space-y-6">
                   <div className="relative overflow-hidden border border-[#333] bg-[#121212] group">
                     <img
-                      src="/priscilla-cahino-perfil.png"
+                      src="/priscilla-cahino-perfil.webp"
                       alt="Priscilla Cahino - Retrato Profissional"
                       width={480}
                       height={560}
@@ -98,7 +98,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                       referrerPolicy="no-referrer"
                       loading="eager"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = "https://i.ibb.co/tTDMvp6L/retrato-profissional-2.png";
+                        (e.target as HTMLImageElement).src = "/priscilla-cahino-perfil.png";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-transparent to-transparent opacity-30 pointer-events-none"></div>
@@ -463,19 +463,19 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
       {/* Filosofia & Propósito */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden border border-[#333] hover:border-[#FF6B35] bg-[#141414] p-8 sm:p-12 transition-colors">
+        <div className="relative overflow-hidden border border-[#333] hover:border-[#FF6B35] bg-[#141414] p-6 sm:p-8 transition-colors">
           <div className="max-w-3xl">
-            <div className="h-[2px] w-12 bg-[#FF6B35] mb-4"></div>
-            <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#FF6B35] block mb-2 font-mono">
+            <div className="h-[2px] w-10 bg-[#FF6B35] mb-3"></div>
+            <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#FF6B35] block mb-2 font-mono">
               {t.quoteEyebrow}
             </span>
-            <blockquote className="text-xl sm:text-2xl font-serif-artistic italic text-[#eee] font-normal leading-relaxed mb-3">
+            <blockquote className="text-base sm:text-lg font-serif-artistic italic text-[#d4d4d4] font-normal leading-relaxed mb-2.5">
               {t.quoteText}
             </blockquote>
-            <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#FF6B35]">
+            <p className="text-xs uppercase tracking-[0.18em] font-semibold text-[#FF6B35]">
               {t.quoteAuthor}
             </p>
-            <p className="mt-2 text-xs text-[#9ca3af] italic font-light">
+            <p className="mt-1.5 text-xs text-[#9ca3af] italic font-light">
               {t.quoteNote}
             </p>
           </div>

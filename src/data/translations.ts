@@ -52,7 +52,7 @@ export const TRANSLATIONS: Record<Language, UIContent> = {
       storyBadge: "Priscilla Cahino • CS/CX & Tecnologia",
       storyHighlight: "Sou uma profissional com mais de dezoito anos de experiência consolidada nos segmentos bancário e imobiliário. Foi nesse ambiente de alta exigência que desenvolvi domínio em atendimento, relacionamento com clientes, esteiras financeiras, crédito e resolução de demandas críticas.",
       storyP1: "Ao longo dessa vivência, percebi que a tecnologia e a análise de dados oferecem ferramentas poderosas para potencializar aquilo que sempre fiz: aproximar o cliente da solução ideal, simplificar processos burocráticos e eliminar gargalos operacionais.",
-      storyP2: "Por isso, iniciei minha formação em Análise e Desenvolvimento de Sistemas (ADS) na UNIPÊ, integrando a Fábrica de Software. Não busco me apresentar como iniciante genérica em TI nem como analista isolada de números, mas como uma profissional sênior em negócios que agora domina a linguagem técnica de produtos digitais.",
+      storyP2: "Por isso, iniciei minha formação em Análise e Desenvolvimento de Sistemas (ADS) na UNIPÊ, integrando a Fábrica de Software. Não busco me apresentar como iniciante genérica em TI nem como analista isolada de números, mas como uma profissional sênior em negócios que vem ampliando sua capacidade de dialogar e trabalhar com ferramentas de produtos digitais e dados.",
       storyP3: "Dados e UX são diferenciais que utilizo no dia a dia para desenhar esteiras mais fluídas, entender indicadores de cancelamento ou inadimplência e construir pontes sólidas entre as áreas de negócio e engenharia.",
       storyQuoteBox: "“Minha missão é aplicar inteligência de processos, visão de dados e empatia na experiência do usuário para transformar operações complexas em jornadas simples, humanas e orientadas a resultados.”",
       personalTitle: "Além do trabalho e da tecnologia",
@@ -114,7 +114,7 @@ export const TRANSLATIONS: Record<Language, UIContent> = {
         categoryLabel: "Análise de Dados & BI",
         summary: "Projeto desenvolvido como desafio de workshop simulando o cenário de uma clínica de saúde para análise de indicadores de consultas, pacientes e estudo exploratório sobre risco de inadimplência.",
         description: "Projeto acadêmico desenvolvido como desafio técnico final de workshop, simulando o cenário de uma clínica de saúde que precisa organizar e analisar seus dados operacionais. O trabalho reúne etapas de modelagem de banco de dados no MySQL, criação e manipulação com SQL, análise exploratória e introdução a Machine Learning em Python, e construção de dashboard de indicadores no Power BI.",
-        image: "/projects/clinicacare.png",
+        image: "/projects/clinicacare.webp",
         technologies: ["SQL", "MySQL", "Python", "Pandas", "Machine Learning", "Power BI", "Modelagem de Banco de Dados"],
         highlights: [
           "Modelagem lógica e scripts estruturados de criação e manipulação em banco MySQL",
@@ -134,13 +134,13 @@ export const TRANSLATIONS: Record<Language, UIContent> = {
         categoryLabel: "UX/UI Design & Produto",
         summary: "Plataforma desenvolvida na Fábrica de Software do UNIPÊ para o projeto de extensão comunitário, onde atuei na área de UX/UI prototipando telas, fluxos e interfaces no Figma.",
         description: "Desenvolvido na Fábrica de Software do UNIPÊ para apoiar o projeto de extensão Administração para Todos, que oferece cursos gratuitos de capacitação comunitária em gestão. Atuei na concepção de UX/UI, sendo responsável pela prototipação das telas, organização dos fluxos e arquitetura da informação para três perfis de usuários: Coordenação, Instrutores e Alunos.",
-        image: "/projects/adm4all.png",
-        technologies: ["UX/UI Design", "Figma", "Prototipação", "Design System", "Arquitetura de Informação", "Usabilidade"],
+        image: "/projects/adm4all.webp",
+        technologies: ["UX/UI Design", "Figma", "Prototipação", "Mapeamento de Fluxos", "Arquitetura de Informação", "Usabilidade"],
         highlights: [
           "Responsável pela concepção e prototipação completa das telas e interfaces no Figma",
           "Centralização de processos antes manuais: turmas, presença digital, notas e certificados",
           "Estruturação de fluxos para três perfis distintos: Coordenação, Instrutores e Alunos",
-          "Aplicação de heurísticas de usabilidade, clareza e Customer Experience (CX)",
+          "Foco em usabilidade, clareza visual e Customer Experience (CX)",
           "Projeto com plataforma web implementada e publicada para visualização"
         ],
         githubUrl: "https://github.com/Priscillacahino/Fabrica_de_Software_2026.1_Adm4All",
@@ -156,182 +156,13 @@ export const TRANSLATIONS: Record<Language, UIContent> = {
         categoryLabel: "UX/UI Design & Mobile",
         summary: "Projeto final de UX/UI desenvolvido como critério de avaliação para ingresso na equipe de UX/UI do Adm4All na Fábrica de Software, englobando persona, jornada no Miro e protótipo interativo no Figma.",
         description: "Proposta de solução digital mobile para o segmento pet, criada como avaliação final do Workshop da Fábrica de Software 2026.1. O processo compreendeu a criação da persona 'Tamiris', mapeamento completo da jornada do cliente no Miro, esboços iniciais manuais, wireframes e protótipos de baixa e alta fidelidade navegáveis no Figma.",
-        image: "/projects/petzone.png",
-        technologies: ["Figma", "Miro", "UX Research", "Persona", "Jornada do Cliente", "Wireframes", "Mobile First"],
+        image: "/projects/petzone.webp",
+        technologies: ["Persona", "Jornada do Cliente", "Miro", "Figma", "Wireframes", "Prototipação", "Mobile First"],
         highlights: [
           "Projeto avaliativo que viabilizou o ingresso na equipe de UX/UI da Fábrica de Software",
           "Construção da persona e Mapeamento da Jornada do Cliente no Miro",
           "Evolução visual desde esboços à mão até protótipos de baixa e alta fidelidade",
           "Protótipo navegável interativo no Figma com fluxos de agendamento de cuidados e serviços veterinários"
-        ],
-        githubUrl: "https://github.com/Priscillacahino/Workshop_Desafio-Final_PetZona",
-        figmaUrl: "https://www.figma.com/proto/O5rsOpFFIhtEOQWkDdcwW7/Sem-t%C3%ADtulo?node-id=94-537&p=f&t=iJxgDcyvzsfzQQxZ-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1",
-        featured: true
-      }
-    ]
-  },
-  en: {
-    header: {
-      subtitle: "Customer Success & Tech Operations",
-      aboutNav: "About Me",
-      projectsNav: "Projects",
-      btnResume: "Resume"
-    },
-    about: {
-      topBadge: "Customer Success & Operations • 18 Years in Business & Credit",
-      location: "João Pessoa - PB, Brazil",
-      profileEyebrow: "Professional Positioning",
-      roles: [
-        "Customer Success & Tech Operations",
-        "18 years in credit, customer care & workflows",
-        "Data & UX applied to the customer journey"
-      ],
-      btnProjects: "View Academic Projects",
-      btnResume: "Download Resume (CV)",
-      btnWhatsapp: "WhatsApp",
-      btnLinkedin: "LinkedIn",
-      presentationEyebrow: "Thesis & Strategic Value",
-      presentationHeadline: "Senior in business, credit, workflows, and relationship management; actively expanding digital product tools and data analytics.",
-      presentationP1: "My background consolidates more than 18 years in the banking and real estate industries, overseeing credit underwriting pipelines, high-touch client relationships, documentary compliance, and rapid resolution of complex operational friction points.",
-      presentationP2: "Today, I bridge this senior business foundation with modern technology. Data and UX do not compete with my experience—they serve as practical differentiators: I leverage SQL, Python, Power BI, and Figma prototyping to analyze retention metrics, map customer journeys, and support evidence-based decisions.",
-      copyEmail: "Copy Email",
-      copied: "Copied!",
-      pillarsEyebrow: "Strategic Pillars & Competencies",
-      pillarsBadge: "04 Integrated Pillars",
-      pillars: [
-        {
-          title: "Core: Customer Success & Operations",
-          description: "18+ years of solid experience across banking and real estate managing credit underwriting pipelines, consultative customer care, and rapid operational problem-solving."
-        },
-        {
-          title: "Differentiator: Data Analytics & Metrics",
-          description: "Data applied directly to the customer journey: relational schema modeling, SQL queries, Power BI dashboard specifications, and exploratory analytics for strategic decision-making."
-        },
-        {
-          title: "Differentiator: UX/UI & Customer Journey",
-          description: "User-centered design: flow mapping, information architecture, wireframing, and interactive prototyping in Figma for intuitive and accessible digital platforms."
-        },
-        {
-          title: "Lever: Generative AI & Process Efficiency",
-          description: "Strategic leverage of AI tools to accelerate documentation synthesis, ideate workflow architecture, and elevate daily operational speed."
-        }
-      ],
-      storyEyebrow: "Background & Professional Context",
-      storyTitle: "About Me",
-      storyBadge: "Priscilla Cahino • CS/CX & Technology",
-      storyHighlight: "I bring over 18 years of seasoned professional experience in the banking and real estate industries, where I mastered customer care, high-stakes relationship management, financial pipelines, and critical problem resolution.",
-      storyP1: "Throughout this journey, I realized that technology and data analytics offer powerful instruments to accelerate what I have always delivered: connecting clients to optimal outcomes, dismantling bureaucratic barriers, and eliminating operational friction.",
-      storyP2: "Consequently, I am pursuing Systems Analysis and Development (ADS) at UNIPÊ and active engagement in the university Software Factory. I do not position myself as a generic tech beginner or an isolated data coder, but as a senior business professional equipped with modern digital product acumen.",
-      storyP3: "Data and UX are tactical advantages I use daily to design smoother workflows, diagnose churn and delinquency indicators, and build sturdy bridges between business strategy and engineering teams.",
-      storyQuoteBox: "“My purpose is to apply process intelligence, data-driven reasoning, and genuine user empathy to transform complex operations into simple, humane, and outcome-oriented journeys.”",
-      personalTitle: "Beyond Technology & Career",
-      personalText: "During my downtime, I appreciate the sea and coastline in João Pessoa, enjoy great cinema with popcorn, and remain observant of human interaction. Observing daily routines is the most sincere way to cultivate empathy: first listen with intent, diagnose genuine human needs, and only then architect effective solutions.",
-      aiTitle: "Artificial Intelligence as a Strategic Multiplier",
-      aiText: "I actively deploy Generative AI across my professional and academic routines—synthesizing specifications, testing exploratory hypotheses, organizing system documentation, and expanding operational throughput.",
-      storyClosing: "This space reflects my authentic professional positioning, core operational principles, and hands-on projects published on GitHub.",
-      featuredEyebrow: "Academic Projects & Applied Practice",
-      featuredTitle: "Featured Projects",
-      featuredSubtitle: "Applied digital solutions engineered within the Software Factory and technical workshops.",
-      viewAllProjects: "View all detailed projects",
-      quoteEyebrow: "Action Principle",
-      quoteText: "“Opportunities multiply as they are seized.”",
-      quoteAuthor: "Sun Tzu — The Art of War",
-      quoteNote: "Framed and edited by Priscilla Cahino.",
-      ctaEyebrow: "Contact & Network",
-      ctaTitle: "Open to Strategic Career Opportunities & Collaborations",
-      ctaDescription: "Available for roles in Customer Success, Tech Operations, Relationship Management, and projects seeking mature business leadership fused with analytical and UX capabilities."
-    },
-    projects: {
-      eyebrow: "Technical Portfolio & GitHub",
-      title: "Academic Projects & GitHub",
-      subtitle: "Projects developed during my Systems Analysis degree, inside UNIPÊ's Software Factory, and in technical data and interface workshops.",
-      filterLabel: "Filter by area:",
-      filters: {
-        all: "All",
-        data: "Data & BI",
-        ux: "UX/UI Design",
-        dev: "Development & Systems"
-      },
-      highlightsLabel: "Key Deliverables & Highlights:",
-      techLabel: "Technologies & Tools:",
-      btnLive: "Access Web Platform",
-      btnFigma: "Figma Prototype",
-      btnResume: "View Full Resume",
-      btnReturnAbout: "Back to About Me & Profile",
-      returnBoxTitle: "Want to learn more about my career journey?",
-      returnBoxDesc: "Explore my 18+ years of proven experience in credit operations, process improvement, and consultative customer care.",
-      ctaEyebrow: "Get in Touch",
-      ctaTitle: "Let's discuss opportunities and shared challenges",
-      ctaDescription: "I am readily available for conversations regarding roles in Customer Success, Operations, and Technology.",
-      modalClose: "Close",
-      modalOpenGithub: "Open GitHub Repository"
-    },
-    footer: {
-      roleLine: "Customer Success & Tech Operations • 18 years in credit, customer care & process optimization",
-      aboutLink: "01. About Me & Career",
-      projectsLink: "02. Academic Projects",
-      resumeLink: "03. Resume (CV)",
-      rights: "All rights reserved.",
-      portfolioLabel: "Professional Portfolio"
-    },
-    projectsData: [
-      {
-        id: "clinicacare",
-        title: "ClínicaCare",
-        subtitle: "Data Analytics, SQL, Python & Power BI Dashboard",
-        category: "data",
-        categoryLabel: "Data Analytics & BI",
-        summary: "Workshop project simulating a healthcare clinic scenario to evaluate appointment attendance, patient indicators, and exploratory default risk patterns.",
-        description: "Capstone academic project developed in an intensive technical workshop simulating a health clinic that needs to organize and analyze its operational data. The project spans MySQL database modeling, SQL script manipulation, exploratory analysis with Python/Pandas and introductory Machine Learning, and executive metric dashboards in Power BI.",
-        image: "/projects/clinicacare.png",
-        technologies: ["SQL", "MySQL", "Python", "Pandas", "Machine Learning", "Power BI", "Relational Modeling"],
-        highlights: [
-          "Relational schema modeling and structured SQL scripts in MySQL",
-          "Analysis of consultation volumes by specialty, missed appointments, and payment status",
-          "Exploratory analysis in Python (Pandas) identifying patterns correlated with default risk",
-          "Executive Power BI dashboard monitoring key operational and financial indicators",
-          "Structured dataset created for academic investigation and operational decision support"
-        ],
-        githubUrl: "https://github.com/Priscillacahino/Desafio_Final_Workshop_26.2_ClinicaCare",
-        featured: true
-      },
-      {
-        id: "adm4all",
-        title: "Adm4All — Administration for All",
-        subtitle: "Training Platform & UX/UI Interface (UNIPÊ Software Factory)",
-        category: "ux-ui",
-        categoryLabel: "UX/UI Design & Product",
-        summary: "Platform built inside UNIPÊ's Software Factory for a community extension program, where I acted in UX/UI prototyping screens, user flows, and Figma interfaces.",
-        description: "Developed at UNIPÊ's Software Factory to support the 'Administração para Todos' extension initiative offering free vocational management courses. I led the UX/UI prototyping in Figma, architecting information flows and intuitive interfaces tailored to three user profiles: Academic Coordination, Instructors, and Students.",
-        image: "/projects/adm4all.png",
-        technologies: ["UX/UI Design", "Figma", "Prototyping", "Design System", "Information Architecture", "Usability"],
-        highlights: [
-          "End-to-end interface and responsive screen prototyping in Figma",
-          "Digitalization of previously manual workflows: classes, attendance, grades, and certificates",
-          "Tailored user flows for three distinct personas: Coordination, Instructors, and Students",
-          "Application of Usability heuristics, visual hierarchy, and Customer Experience (CX)",
-          "Published, live web platform ready for public review"
-        ],
-        githubUrl: "https://github.com/Priscillacahino/Fabrica_de_Software_2026.1_Adm4All",
-        liveUrl: "https://adm4all.extensao-fs.com.br/",
-        figmaUrl: "https://www.figma.com/design/J4jTCbznAsTgAty3vPFsJ1/Adm4All?node-id=0-1&m=dev&t=P1kGYH9zdTgibscf-1",
-        featured: true
-      },
-      {
-        id: "petzone",
-        title: "Petzona",
-        subtitle: "UX/UI Final Project & Mobile First (Software Factory 2026.1)",
-        category: "ux-ui",
-        categoryLabel: "UX/UI Design & Mobile",
-        summary: "Capstone UX/UI project developed as evaluation criteria for joining the Adm4All UX/UI team at the Software Factory, encompassing persona research, Miro customer journey, and interactive Figma prototypes.",
-        description: "Mobile digital solution designed for the pet care segment as the final capstone evaluation of the Software Factory Workshop 2026.1. The design process included the 'Tamiris' persona, Miro customer journey mapping, early paper sketches, wireframes, and clickable lo-fi & hi-fi prototypes in Figma.",
-        image: "/projects/petzone.png",
-        technologies: ["Figma", "Miro", "UX Research", "Persona", "Customer Journey", "Wireframes", "Mobile First"],
-        highlights: [
-          "Capstone project that qualified entry into the Software Factory UX/UI team",
-          "Constructed user persona and complete Customer Journey Map in Miro",
-          "Design progression from pencil sketches to low and high-fidelity interactive prototypes",
-          "Fully navigable Figma prototype featuring service scheduling, catalog, and checkout flows"
         ],
         githubUrl: "https://github.com/Priscillacahino/Workshop_Desafio-Final_PetZona",
         figmaUrl: "https://www.figma.com/proto/O5rsOpFFIhtEOQWkDdcwW7/Sem-t%C3%ADtulo?node-id=94-537&p=f&t=iJxgDcyvzsfzQQxZ-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1",
@@ -390,7 +221,7 @@ export const TRANSLATIONS: Record<Language, UIContent> = {
       storyBadge: "Priscilla Cahino • CS/CX y Tecnología",
       storyHighlight: "Cuento con más de dieciocho años de experiencia en los sectores bancario e inmobiliario, donde consolidé dominio en atención al cliente, esteiras de crédito, relación de cuentas y resolución de situaciones operativas críticas.",
       storyP1: "A lo largo de esa trayectoria comprendí que la tecnología y el análisis de datos son herramientas ideales para potenciar mi vocación: conectar al cliente con la mejor solución, simplificar procesos burocráticos y eliminar cuellos de botella.",
-      storyP2: "Por ello curso Análisis y Desarrollo de Sistemas (ADS) en UNIPÊ e integro la Fábrica de Software. No busco presentarme como principiante genérica en TI, sino como profesional senior en negocios que ahora domina el lenguaje técnico de productos digitales.",
+      storyP2: "Por ello curso Análisis y Desarrollo de Sistemas (ADS) en UNIPÊ e integro la Fábrica de Software. No busco presentarme como principiante genérica en TI, sino como profesional senior en negocios que viene ampliando su capacidad de dialogar y trabajar con herramientas de productos digitales y datos.",
       storyP3: "Datos y UX son diferenciales que empleo cotidianamente para diseñar esteiras más fluidas, entender indicadores de churn o morosidad y tender puentes sólidos entre negocio e ingeniería.",
       storyQuoteBox: "“Mi misión es aplicar inteligencia de procesos, visión analítica y empatía en la experiencia del usuario para transformar operaciones complejas en jornadas simples, humanas y orientadas a resultados.”",
       personalTitle: "Más allá de la tecnología",
@@ -452,7 +283,7 @@ export const TRANSLATIONS: Record<Language, UIContent> = {
         categoryLabel: "Análisis de Datos & BI",
         summary: "Proyecto académico que simula el escenario de una clínica de salud para analizar indicadores de consultas, pacientes y estudio exploratorio sobre riesgo de morosidad.",
         description: "Proyecto académico desarrollado como desafío técnico de taller, simulando el escenario de una clínica que necesita organizar y analizar sus datos operativos. Reúne etapas de modelado relacional en MySQL, creación y consultas en SQL, análisis exploratorio con Python/Pandas e introducción a Machine Learning, y tablero ejecutivo en Power BI.",
-        image: "/projects/clinicacare.png",
+        image: "/projects/clinicacare.webp",
         technologies: ["SQL", "MySQL", "Python", "Pandas", "Machine Learning", "Power BI", "Modelado de Base de Datos"],
         highlights: [
           "Modelado lógico y scripts estructurados en base de datos relacional MySQL",
@@ -472,13 +303,13 @@ export const TRANSLATIONS: Record<Language, UIContent> = {
         categoryLabel: "Diseño UX/UI & Producto",
         summary: "Plataforma desarrollada en la Fábrica de Software de UNIPÊ para el proyecto de extensión comunitaria, donde actué en el área de UX/UI prototipando pantallas, flujos e interfaces en Figma.",
         description: "Desarrollado en la Fábrica de Software de UNIPÊ para apoyar el proyecto de extensión comunitaria que ofrece cursos gratuitos de gestión. Lideré el diseño UX/UI en Figma, organizando los flujos y la arquitectura de información para tres perfiles de usuario: Coordinación, Instructores y Alumnos.",
-        image: "/projects/adm4all.png",
-        technologies: ["Diseño UX/UI", "Figma", "Prototipado", "Design System", "Arquitectura de Información", "Usabilidad"],
+        image: "/projects/adm4all.webp",
+        technologies: ["Diseño UX/UI", "Figma", "Prototipado", "Mapeo de Flujos", "Arquitectura de Información", "Usabilidad"],
         highlights: [
           "Responsable del diseño y prototipado integral de interfaces y pantallas en Figma",
           "Centralización digital de procesos antes manuales: asistencia, notas y certificados",
           "Estructuración de flujos para tres perfiles: Coordinación, Docentes y Alumnos",
-          "Aplicación de heurísticas de usabilidad, claridad visual y Customer Experience (CX)",
+          "Enfoque en usabilidad, claridad visual y Customer Experience (CX)",
           "Proyecto con plataforma web operativa y publicada para acceso público"
         ],
         githubUrl: "https://github.com/Priscillacahino/Fabrica_de_Software_2026.1_Adm4All",
@@ -494,8 +325,8 @@ export const TRANSLATIONS: Record<Language, UIContent> = {
         categoryLabel: "Diseño UX/UI & Móvil",
         summary: "Proyecto final de UX/UI desarrollado como evaluación para ingreso en el equipo de UX/UI de Adm4All en la Fábrica de Software, incluyendo persona, journey map en Miro y prototipo interactivo en Figma.",
         description: "Solución móvil para servicios del segmento pet, creada como evaluación final del Workshop de la Fábrica de Software 2026.1. El proceso abarcó la creación de la persona 'Tamiris', mapeo de la jornada en Miro, bocetos manuales, wireframes y prototipos interactivos en Figma.",
-        image: "/projects/petzone.png",
-        technologies: ["Figma", "Miro", "UX Research", "Persona", "Jornada del Cliente", "Wireframes", "Mobile First"],
+        image: "/projects/petzone.webp",
+        technologies: ["Persona", "Jornada del Cliente", "Miro", "Figma", "Wireframes", "Prototipado", "Mobile First"],
         highlights: [
           "Proyecto evaluativo que posibilitó el ingreso al equipo de UX/UI de la Fábrica de Software",
           "Construcción de persona y mapeo de la jornada del cliente en Miro",

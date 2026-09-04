@@ -82,10 +82,6 @@ export default function App() {
         about: 'Priscilla Cahino | Customer Success & Operações em Tecnologia',
         projects: 'Priscilla Cahino | Projetos Acadêmicos & GitHub'
       },
-      en: {
-        about: 'Priscilla Cahino | Customer Success & Tech Operations',
-        projects: 'Priscilla Cahino | Academic Projects & GitHub'
-      },
       es: {
         about: 'Priscilla Cahino | Customer Success y Operaciones en Tecnología',
         projects: 'Priscilla Cahino | Proyectos Académicos & GitHub'

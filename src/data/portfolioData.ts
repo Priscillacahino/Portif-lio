@@ -23,7 +23,7 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
     categoryLabel: "Análise de Dados & BI",
     summary: "Projeto desenvolvido como desafio de workshop simulando o cenário de uma clínica de saúde para análise de indicadores de consultas, pacientes e estudo exploratório sobre risco de inadimplência.",
     description: "Projeto acadêmico desenvolvido como desafio técnico final de workshop, simulando o cenário de uma clínica de saúde que precisa organizar e analisar seus dados operacionais. O trabalho reúne etapas de modelagem de banco de dados no MySQL, criação e manipulação com SQL, análise exploratória e introdução a Machine Learning em Python, e construção de dashboard de indicadores no Power BI.",
-    image: "/projects/clinicacare.png",
+    image: "/projects/clinicacare.webp",
     technologies: ["SQL", "MySQL", "Python", "Pandas", "Machine Learning", "Power BI", "Modelagem de Banco de Dados"],
     highlights: [
       "Modelagem lógica e scripts estruturados de criação e manipulação em banco MySQL",
@@ -43,13 +43,13 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
     categoryLabel: "UX/UI Design & Produto",
     summary: "Plataforma desenvolvida na Fábrica de Software do UNIPÊ para o projeto de extensão comunitário, onde atuei na área de UX/UI prototipando telas, fluxos e interfaces no Figma.",
     description: "Desenvolvido na Fábrica de Software do UNIPÊ para apoiar o projeto de extensão Administração para Todos, que oferece cursos gratuitos de capacitação comunitária em gestão. Atuei na concepção de UX/UI, sendo responsável pela prototipação das telas, organização dos fluxos e arquitetura da informação para três perfis de usuários: Coordenação, Instrutores e Alunos.",
-    image: "/projects/adm4all.png",
-    technologies: ["UX/UI Design", "Figma", "Prototipação", "Design System", "Arquitetura de Informação", "Usabilidade"],
+    image: "/projects/adm4all.webp",
+    technologies: ["UX/UI Design", "Figma", "Prototipação", "Mapeamento de Fluxos", "Arquitetura de Informação", "Usabilidade"],
     highlights: [
       "Responsável pela concepção e prototipação completa das telas e interfaces no Figma",
       "Centralização de processos antes manuais: turmas, presença digital, notas e certificados",
       "Estruturação de fluxos para três perfis distintos: Coordenação, Instrutores e Alunos",
-      "Aplicação de heurísticas de usabilidade, clareza e Customer Experience (CX)",
+      "Foco em usabilidade, clareza e Customer Experience (CX)",
       "Projeto com plataforma web implementada e publicada para visualização"
     ],
     githubUrl: "https://github.com/Priscillacahino/Fabrica_de_Software_2026.1_Adm4All",
@@ -65,8 +65,8 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
     categoryLabel: "UX/UI Design & Mobile",
     summary: "Projeto final de UX/UI desenvolvido como critério de avaliação para ingresso na equipe de UX/UI do Adm4All na Fábrica de Software, englobando persona, jornada no Miro e protótipo interativo no Figma.",
     description: "Proposta de solução digital mobile para o segmento pet, criada como avaliação final do Workshop da Fábrica de Software 2026.1. O processo compreendeu a criação da persona 'Tamiris', mapeamento completo da jornada do cliente no Miro, esboços iniciais manuais, wireframes e protótipos de baixa e alta fidelidade navegáveis no Figma.",
-    image: "/projects/petzone.png",
-    technologies: ["Figma", "Miro", "UX Research", "Persona", "Jornada do Cliente", "Wireframes", "Mobile First"],
+    image: "/projects/petzone.webp",
+    technologies: ["Persona", "Jornada do Cliente", "Miro", "Figma", "Wireframes", "Prototipação", "Mobile First"],
     highlights: [
       "Projeto avaliativo que viabilizou o ingresso na equipe de UX/UI da Fábrica de Software",
       "Construção da persona e Mapeamento da Jornada do Cliente no Miro",

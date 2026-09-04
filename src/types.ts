@@ -1,6 +1,6 @@
 export type PageType = 'about' | 'projects';
 
-export type Language = 'pt' | 'en' | 'es';
+export type Language = 'pt' | 'es';
 
 export type ProjectCategory = 'all' | 'data' | 'ux-ui' | 'dev';
 
