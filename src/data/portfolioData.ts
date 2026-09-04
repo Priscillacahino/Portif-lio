@@ -2,120 +2,79 @@ import { AcademicProject, ContactInfo } from '../types';
 
 export const CONTACT_DATA: ContactInfo = {
   name: "Priscilla Cahino",
-  tagline: "Customer Success (CS/CX) & Estudante de ADS | Transição para Tecnologia",
+  tagline: "Customer Success e Operações em Tecnologia | 18 anos em crédito, atendimento e melhoria de processos | Dados e UX aplicados à jornada do cliente",
   phone: "+5583999553329",
   phoneFormatted: "(83) 99955-3329",
   email: "priscilla_cahino@hotmail.com",
   secondaryEmail: "priscillacahinoo@gmail.com",
-  linkedin: "https://www.linkedin.com/in/priscilla-cahino/",
+  linkedin: "https://www.linkedin.com/in/priscilla-cahino-04a718aa/",
   github: "https://github.com/Priscillacahino",
-  whatsappUrl: "https://api.whatsapp.com/send?phone=558399553329&text=Ol%C3%A1%20Priscilla!%20Vi%20seu%20portf%C3%B3lio%20profissional.",
-  location: "João Pessoa - PB, Brasil"
+  whatsappUrl: "https://wa.me/5583999553329?text=Ol%C3%A1%20Priscilla!%20Vi%20seu%20portf%C3%B3lio%20profissional.",
+  location: "João Pessoa - PB, Brasil",
+  resumePdfUrl: "/Curriculo_Priscilla_Cahino.pdf"
 };
 
 export const ACADEMIC_PROJECTS: AcademicProject[] = [
   {
     id: "clinicacare",
     title: "ClínicaCare",
-    subtitle: "Análise de Dados e Risco de Inadimplência",
+    subtitle: "Análise de Dados, SQL, Python & Dashboard Power BI",
     category: "data",
     categoryLabel: "Análise de Dados & BI",
-    summary: "Modelagem de banco de dados, SQL, análise exploratória em Python, aplicação de conceitos de Machine Learning e criação de dashboard no Power BI.",
-    description: "Projeto desenvolvido como desafio final de workshop, reunindo modelagem de banco de dados e SQL, análise exploratória em Python, aplicação de conceitos de Machine Learning e criação de dashboard no Power BI para tomada de decisão clínica e financeira.",
+    summary: "Projeto desenvolvido como desafio de workshop simulando o cenário de uma clínica de saúde para análise de indicadores de consultas, pacientes e estudo exploratório sobre risco de inadimplência.",
+    description: "Projeto acadêmico desenvolvido como desafio técnico final de workshop, simulando o cenário de uma clínica de saúde que precisa organizar e analisar seus dados operacionais. O trabalho reúne etapas de modelagem de banco de dados no MySQL, criação e manipulação com SQL, análise exploratória e introdução a Machine Learning em Python, e construção de dashboard de indicadores no Power BI.",
     image: "/projects/clinicacare.png",
-    technologies: ["SQL", "MySQL", "Python", "Pandas", "Machine Learning", "Power BI", "Modelagem Relacional"],
+    technologies: ["SQL", "MySQL", "Python", "Pandas", "Machine Learning", "Power BI", "Modelagem de Banco de Dados"],
     highlights: [
-      "Estruturação do modelo lógico e manipulação em banco MySQL",
-      "Análise exploratória em Python e estudo de taxas de cancelamento/comparecimento",
-      "Aplicação de conceitos de Machine Learning para previsão de padrões e inadimplência",
-      "Criação de dashboard executivo no Power BI para gestão e tomada de decisão"
+      "Modelagem lógica e scripts estruturados de criação e manipulação em banco MySQL",
+      "Análise de volume de consultas por especialidade, faltas e status de pagamento",
+      "Análise exploratória em Python (Pandas) para identificação de padrões associados à inadimplência",
+      "Dashboard executivo no Power BI para acompanhamento de métricas operacionais da clínica",
+      "Base de dados desenvolvida para fins de estudo acadêmico e tomada de decisão"
     ],
-    githubUrl: "https://github.com/Priscillacahino/Desafio_Final_WKS_26.2--Cl-nicaCare",
+    githubUrl: "https://github.com/Priscillacahino/Desafio_Final_Workshop_26.2_ClinicaCare",
     featured: true
   },
   {
     id: "adm4all",
     title: "Adm4All — Administração para Todos",
-    subtitle: "Plataforma de Capacitação & Interface UX/UI",
+    subtitle: "Plataforma de Capacitação & Interface UX/UI (Fábrica de Software UNIPÊ)",
     category: "ux-ui",
     categoryLabel: "UX/UI Design & Produto",
-    summary: "Projeto desenvolvido no contexto da Fábrica de Software da UNIPÊ, no qual fui responsável pela prototipação das telas e construção de fluxos e interfaces no Figma.",
-    description: "Projeto desenvolvido no contexto da Fábrica de Software da UNIPÊ, no qual fui responsável pela prototipação das telas e construção de fluxos e interfaces no Figma.",
+    summary: "Plataforma desenvolvida na Fábrica de Software do UNIPÊ para o projeto de extensão comunitário, onde atuei na área de UX/UI prototipando telas, fluxos e interfaces no Figma.",
+    description: "Desenvolvido na Fábrica de Software do UNIPÊ para apoiar o projeto de extensão Administração para Todos, que oferece cursos gratuitos de capacitação comunitária em gestão. Atuei na concepção de UX/UI, sendo responsável pela prototipação das telas, organização dos fluxos e arquitetura da informação para três perfis de usuários: Coordenação, Instrutores e Alunos.",
     image: "/projects/adm4all.png",
     technologies: ["UX/UI Design", "Figma", "Prototipação", "Design System", "Arquitetura de Informação", "Usabilidade"],
     highlights: [
-      "Responsável pela prototipação completa das telas e interfaces no Figma",
-      "Construção de fluxos de usuário intuitivos, claros e acessíveis",
-      "Aplicação de princípios de Usabilidade e Customer Experience (CX)",
-      "Projeto concebido e desenvolvido no ambiente da Fábrica de Software da UNIPÊ"
+      "Responsável pela concepção e prototipação completa das telas e interfaces no Figma",
+      "Centralização de processos antes manuais: turmas, presença digital, notas e certificados",
+      "Estruturação de fluxos para três perfis distintos: Coordenação, Instrutores e Alunos",
+      "Aplicação de heurísticas de usabilidade, clareza e Customer Experience (CX)",
+      "Projeto com plataforma web implementada e publicada para visualização"
     ],
-    githubUrl: "https://github.com/Priscillacahino/Fabrica-de-Software---Adm4All",
+    githubUrl: "https://github.com/Priscillacahino/Fabrica_de_Software_2026.1_Adm4All",
     liveUrl: "https://adm4all.extensao-fs.com.br/",
+    figmaUrl: "https://www.figma.com/design/J4jTCbznAsTgAty3vPFsJ1/Adm4All?node-id=0-1&m=dev&t=P1kGYH9zdTgibscf-1",
     featured: true
   },
   {
     id: "petzone",
-    title: "PetZone",
-    subtitle: "Protótipo Mobile & Experiência de Serviços Pet",
+    title: "Petzona",
+    subtitle: "Projeto Final de UX/UI & Mobile First (Fábrica de Software 2026.1)",
     category: "ux-ui",
     categoryLabel: "UX/UI Design & Mobile",
-    summary: "Protótipo interativo completo de aplicativo de serviços para pet shop desenvolvido durante workshop imersivo de UX/UI no Figma.",
-    description: "Criação de ponta a ponta da interface e jornada do cliente para um aplicativo especializado no segmento pet. Englobou pesquisa de necessidades dos tutores, mapeamento de jornadas, design de telas de catálogo, carrinho e sistema de agendamento de cuidados e serviços veterinários.",
+    summary: "Projeto final de UX/UI desenvolvido como critério de avaliação para ingresso na equipe de UX/UI do Adm4All na Fábrica de Software, englobando persona, jornada no Miro e protótipo interativo no Figma.",
+    description: "Proposta de solução digital mobile para o segmento pet, criada como avaliação final do Workshop da Fábrica de Software 2026.1. O processo compreendeu a criação da persona 'Tamiris', mapeamento completo da jornada do cliente no Miro, esboços iniciais manuais, wireframes e protótipos de baixa e alta fidelidade navegáveis no Figma.",
     image: "/projects/petzone.png",
-    technologies: ["Figma", "UI Design", "UX Research", "Mobile First", "Wireframes", "Componentização"],
+    technologies: ["Figma", "Miro", "UX Research", "Persona", "Jornada do Cliente", "Wireframes", "Mobile First"],
     highlights: [
-      "Protótipo navegável interativo e responsivo montado no Figma",
-      "Design de fluxo simplificado para agendamento de serviços em poucos cliques",
-      "Identidade visual acolhedora com foco na experiência do usuário final",
-      "Apresentação como desafio final de workshop de Design de Interface"
+      "Projeto avaliativo que viabilizou o ingresso na equipe de UX/UI da Fábrica de Software",
+      "Construção da persona e Mapeamento da Jornada do Cliente no Miro",
+      "Evolução visual desde esboços à mão até protótipos de baixa e alta fidelidade",
+      "Protótipo navegável interativo no Figma com fluxos de agendamento de cuidados e serviços veterinários"
     ],
-    githubUrl: "https://github.com/Priscillacahino/Workshop---Desafio-Final--PetZona",
-    figmaUrl: "https://www.figma.com/proto/O5rsOpFFIhtEOQWkDdcwW7/Sem-t%C3%ADtulo?node-id=189-336&p=f&t=URlo6qFskuIv2UiX-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1",
+    githubUrl: "https://github.com/Priscillacahino/Workshop_Desafio-Final_PetZona",
+    figmaUrl: "https://www.figma.com/proto/O5rsOpFFIhtEOQWkDdcwW7/Sem-t%C3%ADtulo?node-id=94-537&p=f&t=iJxgDcyvzsfzQQxZ-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1",
     featured: true
-  },
-  {
-    id: "fabrica-dados",
-    title: "Workshop de Dados 2026.2",
-    subtitle: "Processamento e Análise Exploratória (EDA)",
-    category: "data",
-    categoryLabel: "Análise de Dados & Python",
-    summary: "Trabalhos práticos na Fábrica de Software focados em manipulação de dados, estatística descritiva e visualização com Python e Jupyter Notebook.",
-    description: "Conjunto de desafios e notebooks de dados desenvolvidos para exploração, higienização e identificação de correlações estatísticas em datasets do mundo real, conectando dados analíticos à geração de insights práticos.",
-    image: null,
-    technologies: ["Python", "Jupyter Notebook", "Pandas", "NumPy", "Estatística", "Visualização de Dados"],
-    highlights: [
-      "Pipelines de limpeza e tratamento de valores ausentes/inconsistentes",
-      "Construção de gráficos para identificação de outliers e distribuições",
-      "Aplicação de lógica analítica orientada a resolução de problemas de negócio"
-    ],
-    githubUrl: "https://github.com/Priscillacahino/Fabrica_de_Software_2026.2",
-    featured: false
-  }
-];
-
-export const SKILL_PILLARS = [
-  {
-    title: "Customer Success & CX",
-    period: "18+ anos de trajetória",
-    description: "18+ anos de experiência em relacionamento com clientes, processos, atendimento e resolução de demandas.",
-    badge: "Experiência Profissional"
-  },
-  {
-    title: "Análise de Dados & SQL",
-    period: "Formação em ADS & Prática",
-    description: "Projetos acadêmicos utilizando SQL, MySQL, Python e Power BI.",
-    badge: "Projetos Acadêmicos"
-  },
-  {
-    title: "UX/UI & Usabilidade",
-    period: "Prototipação no Figma",
-    description: "Prototipação no Figma, fluxos de usuário, usabilidade e design de interfaces.",
-    badge: "Design de Interface"
-  },
-  {
-    title: "Inteligência Artificial",
-    period: "Apoio e Produtividade",
-    description: "Uso da IA como apoio aos estudos, ideação, desenvolvimento e produtividade.",
-    badge: "Apoio & Inovação"
   }
 ];

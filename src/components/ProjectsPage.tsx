@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { PageType, ProjectCategory, AcademicProject } from '../types';
-import { ACADEMIC_PROJECTS, CONTACT_DATA } from '../data/portfolioData';
+import React, { useState, useEffect, useRef } from 'react';
+import { PageType, ProjectCategory, AcademicProject, Language } from '../types';
+import { CONTACT_DATA } from '../data/portfolioData';
+import { TRANSLATIONS } from '../data/translations';
 import { 
   Github, 
   ExternalLink, 
@@ -8,8 +9,6 @@ import {
   X, 
   Layers, 
   Database, 
-  Code2, 
-  Sparkles, 
   CheckCircle2, 
   ArrowLeft, 
   ArrowUpRight,
@@ -21,26 +20,96 @@ import {
   MessageCircle,
   Linkedin,
   Mail,
-  Phone
+  FileText,
+  Download
 } from 'lucide-react';
 
 interface ProjectsPageProps {
   onSelectPage: (page: PageType) => void;
+  currentLanguage: Language;
+  onOpenResume?: () => void;
+  activeProjectId?: string | null;
+  onSelectProject?: (projectId: string | null) => void;
 }
 
-export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
+export const ProjectsPage: React.FC<ProjectsPageProps> = ({ 
+  onSelectPage, 
+  currentLanguage,
+  onOpenResume,
+  activeProjectId,
+  onSelectProject
+}) => {
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>('all');
   const [activeModalProject, setActiveModalProject] = useState<AcademicProject | null>(null);
+  
+  const modalCloseBtnRef = useRef<HTMLButtonElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
+
+  const t = TRANSLATIONS[currentLanguage].projects;
+  const projectsList = TRANSLATIONS[currentLanguage].projectsData;
+
+  // Sync activeProjectId from URL route
+  useEffect(() => {
+    if (activeProjectId) {
+      const match = projectsList.find(p => p.id === activeProjectId);
+      if (match) {
+        previousActiveElement.current = document.activeElement as HTMLElement;
+        setActiveModalProject(match);
+      }
+    } else {
+      setActiveModalProject(null);
+    }
+  }, [activeProjectId, projectsList]);
+
+  // Modal accessibility: Escape key listener and body lock
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && activeModalProject) {
+        handleCloseModal();
+      }
+    };
+
+    if (activeModalProject) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+      setTimeout(() => {
+        modalCloseBtnRef.current?.focus();
+      }, 50);
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeModalProject]);
+
+  const handleOpenModal = (project: AcademicProject) => {
+    previousActiveElement.current = document.activeElement as HTMLElement;
+    setActiveModalProject(project);
+    if (onSelectProject) {
+      onSelectProject(project.id);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setActiveModalProject(null);
+    if (onSelectProject) {
+      onSelectProject(null);
+    }
+    previousActiveElement.current?.focus();
+  };
 
   const filteredProjects = selectedCategory === 'all'
-    ? ACADEMIC_PROJECTS
-    : ACADEMIC_PROJECTS.filter(p => p.category === selectedCategory);
+    ? projectsList
+    : projectsList.filter(p => p.category === selectedCategory);
 
   const categoryCounts = {
-    all: ACADEMIC_PROJECTS.length,
-    data: ACADEMIC_PROJECTS.filter(p => p.category === 'data').length,
-    'ux-ui': ACADEMIC_PROJECTS.filter(p => p.category === 'ux-ui').length,
-    dev: ACADEMIC_PROJECTS.filter(p => p.category === 'dev').length
+    all: projectsList.length,
+    data: projectsList.filter(p => p.category === 'data').length,
+    'ux-ui': projectsList.filter(p => p.category === 'ux-ui').length,
+    dev: projectsList.filter(p => p.category === 'dev').length
   };
 
   return (
@@ -49,37 +118,49 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#2e2e2e]">
           <div>
-            <h2 className="text-[10px] uppercase tracking-[0.4em] text-[#FF6B35] mb-2 font-bold">
-              Portfólio Técnico & Código
-            </h2>
-            <h1 className="font-serif-artistic italic text-4xl sm:text-5xl lg:text-6xl font-normal text-white">
-              Projetos Acadêmicos & GitHub
+            <span className="text-xs uppercase tracking-[0.3em] text-[#FF6B35] mb-2 font-bold block font-mono">
+              {t.eyebrow}
+            </span>
+            <h1 className="font-serif-artistic italic text-3xl sm:text-4xl lg:text-5xl font-normal text-white">
+              {t.title}
             </h1>
-            <p className="text-[#aaa] text-base sm:text-lg max-w-3xl mt-3 leading-relaxed font-light">
-              Projetos desenvolvidos durante minha formação e estudos em Análise e Desenvolvimento de Sistemas (ADS), workshops imersivos e desafios na Fábrica de Software.
+            <p className="text-[#d1d5db] text-base sm:text-lg max-w-3xl mt-3 leading-relaxed font-light">
+              {t.subtitle}
             </p>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            {onOpenResume && (
+              <button
+                id="btn-projects-resume-top"
+                type="button"
+                onClick={onOpenResume}
+                className="inline-flex items-center gap-2 px-4 py-3 bg-[#FF6B35] hover:bg-[#ff7f4d] text-[#121212] text-xs uppercase tracking-wider font-bold transition-colors cursor-pointer"
+              >
+                <FileText className="w-4 h-4" />
+                <span>{t.btnResume}</span>
+              </button>
+            )}
+
             <a
               id="btn-projects-github-profile"
               href={CONTACT_DATA.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 border border-[#333] hover:border-[#FF6B35] bg-[#181818] text-white text-xs uppercase tracking-wider font-semibold transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-3 border border-[#333] hover:border-[#FF6B35] bg-[#181818] text-white text-xs uppercase tracking-wider font-semibold transition-colors"
             >
               <Github className="w-4 h-4 text-[#FF6B35]" />
-              <span>github.com/Priscillacahino</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#777]" />
+              <span>GitHub</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#9ca3af]" />
             </a>
           </div>
         </div>
 
         {/* Category Filters Bar */}
         <div className="mt-8 flex flex-wrap items-center gap-2.5">
-          <div className="flex items-center gap-2 mr-2 text-[11px] uppercase tracking-wider font-mono text-[#888]">
+          <div className="flex items-center gap-2 mr-2 text-xs uppercase tracking-wider font-mono text-[#9ca3af]">
             <Filter className="w-3.5 h-3.5 text-[#FF6B35]" />
-            <span>Filtrar área:</span>
+            <span>{t.filterLabel}</span>
           </div>
 
           <button
@@ -88,10 +169,10 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
             className={`px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer ${
               selectedCategory === 'all'
                 ? 'bg-[#FF6B35] text-[#121212]'
-                : 'border border-[#333] hover:border-[#666] bg-[#181818] text-[#999]'
+                : 'border border-[#333] hover:border-[#666] bg-[#181818] text-[#d1d5db]'
             }`}
           >
-            Todos ({categoryCounts.all})
+            {t.filters.all} ({categoryCounts.all})
           </button>
 
           <button
@@ -100,11 +181,11 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
             className={`flex items-center gap-1.5 px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer ${
               selectedCategory === 'data'
                 ? 'bg-[#FF6B35] text-[#121212]'
-                : 'border border-[#333] hover:border-[#666] bg-[#181818] text-[#999]'
+                : 'border border-[#333] hover:border-[#666] bg-[#181818] text-[#d1d5db]'
             }`}
           >
             <Database className="w-3.5 h-3.5" />
-            <span>Dados & BI ({categoryCounts.data})</span>
+            <span>{t.filters.data} ({categoryCounts.data})</span>
           </button>
 
           <button
@@ -113,11 +194,11 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
             className={`flex items-center gap-1.5 px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer ${
               selectedCategory === 'ux-ui'
                 ? 'bg-[#FF6B35] text-[#121212]'
-                : 'border border-[#333] hover:border-[#666] bg-[#181818] text-[#999]'
+                : 'border border-[#333] hover:border-[#666] bg-[#181818] text-[#d1d5db]'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>UX/UI Design ({categoryCounts['ux-ui']})</span>
+            <span>{t.filters.ux} ({categoryCounts['ux-ui']})</span>
           </button>
 
           {categoryCounts.dev > 0 && (
@@ -127,11 +208,11 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
               className={`flex items-center gap-1.5 px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer ${
                 selectedCategory === 'dev'
                   ? 'bg-[#FF6B35] text-[#121212]'
-                  : 'border border-[#333] hover:border-[#666] bg-[#181818] text-[#999]'
+                  : 'border border-[#333] hover:border-[#666] bg-[#181818] text-[#d1d5db]'
               }`}
             >
               <Terminal className="w-3.5 h-3.5" />
-              <span>Desenvolvimento & Sistemas ({categoryCounts.dev})</span>
+              <span>{t.filters.dev} ({categoryCounts.dev})</span>
             </button>
           )}
         </div>
@@ -143,7 +224,8 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
           {filteredProjects.map((project, idx) => (
             <article
               key={project.id}
-              className="border border-[#333] hover:border-[#FF6B35] bg-[#181818] overflow-hidden flex flex-col justify-between transition-all group"
+              id={`project-${project.id}`}
+              className="border border-[#333] hover:border-[#FF6B35] bg-[#181818] overflow-hidden flex flex-col justify-between transition-all group shadow-md"
             >
               <div>
                 {/* Visual Header / Image */}
@@ -151,29 +233,34 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
                   <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#141414] border-b border-[#2e2e2e]">
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={`Imagem do projeto ${project.title}`}
+                      loading="lazy"
+                      decoding="async"
+                      width={640}
+                      height={360}
                       className="w-full h-full object-cover object-top grayscale contrast-105 group-hover:grayscale-0 transition-all duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-black/30 pointer-events-none" />
 
                     {/* Category pill */}
                     <div className="absolute top-4 left-4">
-                      <span className="px-2.5 py-1 bg-[#121212]/90 text-[10px] font-mono text-[#FF6B35] uppercase tracking-wider border border-[#333]">
+                      <span className="px-2.5 py-1 bg-[#121212]/90 text-xs font-mono text-[#FF6B35] uppercase tracking-wider border border-[#333]">
                         {project.categoryLabel}
                       </span>
                     </div>
 
                     <div className="absolute top-4 right-4">
-                      <span className="text-[10px] font-mono text-[#888] bg-[#121212]/90 px-2 py-0.5 border border-[#333]">
+                      <span className="text-xs font-mono text-[#d1d5db] bg-[#121212]/90 px-2 py-0.5 border border-[#333]">
                         0{idx + 1}
                       </span>
                     </div>
 
                     {/* Zoom button */}
                     <button
-                      onClick={() => setActiveModalProject(project)}
-                      className="absolute bottom-4 right-4 p-2 bg-[#121212]/90 text-[#bbb] hover:text-[#121212] hover:bg-[#FF6B35] transition-all border border-[#333] cursor-pointer"
-                      title="Ampliar captura do projeto"
+                      onClick={() => handleOpenModal(project)}
+                      className="absolute bottom-4 right-4 p-2 bg-[#121212]/90 text-[#d1d5db] hover:text-[#121212] hover:bg-[#FF6B35] transition-all border border-[#333] cursor-pointer"
+                      title="Visualizar detalhes do projeto"
+                      aria-label={`Visualizar detalhes do projeto ${project.title}`}
                     >
                       <Maximize2 className="w-4 h-4" />
                     </button>
@@ -190,15 +277,15 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
                         )}
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono text-[#FF6B35] uppercase tracking-wider">
+                        <span className="text-xs font-mono text-[#FF6B35] uppercase tracking-wider">
                           {project.categoryLabel}
                         </span>
-                        <h4 className="font-serif-artistic italic text-white text-lg mt-0.5">
+                        <h3 className="font-serif-artistic italic text-white text-xl mt-0.5">
                           {project.title}
-                        </h4>
+                        </h3>
                       </div>
                     </div>
-                    <span className="text-[10px] font-mono text-[#888]">
+                    <span className="text-xs font-mono text-[#d1d5db] bg-[#1a1a1a] px-2 py-1 border border-[#333]">
                       0{idx + 1}
                     </span>
                   </div>
@@ -215,14 +302,14 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
                     </p>
                   </div>
 
-                  <p className="text-sm text-[#aaa] leading-relaxed font-light">
+                  <p className="text-sm text-[#d1d5db] leading-relaxed font-light">
                     {project.description}
                   </p>
 
                   {/* Highlights */}
                   <div className="space-y-2 pt-1">
-                    <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#888]">
-                      Destaques & Entregas:
+                    <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9ca3af]">
+                      {t.highlightsLabel}
                     </p>
                     <ul className="space-y-1.5">
                       {project.highlights.map((item, hIdx) => (
@@ -236,14 +323,14 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
 
                   {/* Technology Tags */}
                   <div className="pt-2">
-                    <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#888] mb-2">
-                      Tecnologias Utilizadas:
+                    <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9ca3af] mb-2">
+                      {t.techLabel}
                     </p>
                     <div className="flex flex-wrap gap-1.5">
                       {project.technologies.map((tech, tIdx) => (
                         <span
                           key={tIdx}
-                          className="px-2.5 py-1 bg-[#141414] border border-[#2a2a2a] text-xs font-mono text-[#888]"
+                          className="px-2.5 py-1 bg-[#141414] border border-[#2a2a2a] text-xs font-mono text-[#9ca3af]"
                         >
                           {tech}
                         </span>
@@ -264,7 +351,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
                       className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#FF6B35] hover:bg-[#ff7f4d] text-[#121212] text-xs uppercase tracking-wider font-bold transition-colors"
                     >
                       <Globe className="w-3.5 h-3.5" />
-                      <span>Acessar Plataforma Web</span>
+                      <span>{t.btnLive}</span>
                       <ArrowUpRight className="w-3 h-3" />
                     </a>
                   )}
@@ -277,7 +364,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
                       className="inline-flex items-center gap-1.5 px-4 py-2 border border-[#333] hover:border-[#FF6B35] bg-[#222] text-[#eee] text-xs uppercase tracking-wider font-semibold transition-colors"
                     >
                       <Figma className="w-3.5 h-3.5 text-[#FF6B35]" />
-                      <span>Protótipo no Figma</span>
+                      <span>{t.btnFigma}</span>
                       <ArrowUpRight className="w-3 h-3" />
                     </a>
                   )}
@@ -291,7 +378,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
                 >
                   <Github className="w-3.5 h-3.5 text-[#FF6B35]" />
                   <span>GitHub</span>
-                  <ExternalLink className="w-3 h-3 text-[#777]" />
+                  <ExternalLink className="w-3 h-3 text-[#9ca3af]" />
                 </a>
               </div>
             </article>
@@ -304,21 +391,35 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
         <div className="border border-[#333] bg-[#141414] p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center sm:text-left">
             <h3 className="font-serif-artistic italic text-2xl text-white">
-              Gostou dos projetos acadêmicos?
+              {t.returnBoxTitle}
             </h3>
-            <p className="text-xs sm:text-sm text-[#aaa] max-w-xl font-light">
-              Você pode conferir a história completa de transição e os mais de 18 anos de trajetória profissional na primeira página.
+            <p className="text-xs sm:text-sm text-[#d1d5db] max-w-xl font-light">
+              {t.returnBoxDesc}
             </p>
           </div>
 
-          <button
-            id="btn-return-about"
-            onClick={() => onSelectPage('about')}
-            className="flex items-center gap-2 px-6 py-3.5 bg-[#FF6B35] hover:bg-[#ff7f4d] text-[#121212] font-bold text-xs uppercase tracking-wider transition-colors shrink-0 cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Voltar para Sobre Mim & Perfil</span>
-          </button>
+          <div className="flex items-center gap-3 shrink-0 flex-wrap justify-center">
+            {onOpenResume && (
+              <button
+                id="btn-projects-resume-bottom"
+                type="button"
+                onClick={onOpenResume}
+                className="flex items-center gap-2 px-5 py-3.5 border border-[#444] hover:border-[#FF6B35] bg-[#222] text-white hover:text-[#FF6B35] font-semibold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+              >
+                <FileText className="w-4 h-4 text-[#FF6B35]" />
+                <span>{t.btnResume}</span>
+              </button>
+            )}
+
+            <button
+              id="btn-return-about"
+              onClick={() => onSelectPage('about')}
+              className="flex items-center gap-2 px-6 py-3.5 bg-[#FF6B35] hover:bg-[#ff7f4d] text-[#121212] font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>{t.btnReturnAbout}</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -327,14 +428,14 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
         <div className="border border-[#333] bg-[#161616] p-8 sm:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-3">
-              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#FF6B35]">
-                Contato & Conexão
+              <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#FF6B35] block">
+                {t.ctaEyebrow}
               </span>
               <h2 className="font-serif-artistic italic text-2xl sm:text-3xl text-white font-normal">
-                Aberta a novas oportunidades, aprendizados e conexões profissionais
+                {t.ctaTitle}
               </h2>
-              <p className="text-[#aaa] text-sm leading-relaxed max-w-2xl font-light">
-                Estou aberta a propostas para Customer Success, CX, análise de dados e desafios em tecnologia. Fique à vontade para entrar em contato pelos canais diretos abaixo.
+              <p className="text-[#d1d5db] text-sm leading-relaxed max-w-2xl font-light">
+                {t.ctaDescription}
               </p>
             </div>
 
@@ -388,57 +489,127 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectPage }) => {
         </div>
       </section>
 
-      {/* Full Image Preview Modal */}
+      {/* Accessible Full Project Preview Modal with Focus & Esc Management */}
       {activeModalProject && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#121212]/90 backdrop-blur-sm"
-          onClick={() => setActiveModalProject(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-project-title"
+          aria-describedby="modal-project-desc"
+          onClick={handleCloseModal}
         >
           <div 
             className="relative w-full max-w-4xl max-h-[90vh] bg-[#181818] border border-[#444] overflow-hidden flex flex-col shadow-2xl"
             onClick={(e) => e.stopPropagation()}
+            tabIndex={-1}
           >
-            <div className="p-4 bg-[#141414] flex items-center justify-between border-b border-[#333]">
+            {/* Modal Header */}
+            <div className="p-4 sm:p-5 bg-[#141414] flex items-center justify-between border-b border-[#333]">
               <div>
-                <h4 className="font-serif-artistic italic text-white text-lg">
+                <h3 id="modal-project-title" className="font-serif-artistic italic text-white text-xl sm:text-2xl">
                   {activeModalProject.title}
-                </h4>
-                <p className="text-xs uppercase tracking-wider text-[#FF6B35] font-semibold">
+                </h3>
+                <p className="text-xs uppercase tracking-wider text-[#FF6B35] font-semibold mt-0.5">
                   {activeModalProject.subtitle}
                 </p>
               </div>
               <button
-                onClick={() => setActiveModalProject(null)}
-                className="p-1.5 text-[#aaa] hover:text-white hover:bg-[#222] transition-colors cursor-pointer"
-                title="Fechar"
+                ref={modalCloseBtnRef}
+                onClick={handleCloseModal}
+                className="p-2 text-[#d1d5db] hover:text-white hover:bg-[#252525] border border-[#333] transition-colors cursor-pointer"
+                title={t.modalClose}
+                aria-label={t.modalClose}
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="overflow-auto p-4 bg-[#101010] flex items-center justify-center">
+            {/* Modal Body */}
+            <div className="overflow-y-auto p-4 sm:p-6 space-y-4 bg-[#121212]">
               {activeModalProject.image && (
-                <img
-                  src={activeModalProject.image}
-                  alt={activeModalProject.title}
-                  className="max-w-full max-h-[70vh] object-contain border border-[#333]"
-                />
+                <div className="flex items-center justify-center bg-[#101010] border border-[#2a2a2a] p-2">
+                  <img
+                    src={activeModalProject.image}
+                    alt={activeModalProject.title}
+                    className="max-w-full max-h-[50vh] object-contain"
+                  />
+                </div>
               )}
+
+              <p id="modal-project-desc" className="text-sm sm:text-base text-[#d1d5db] leading-relaxed font-light">
+                {activeModalProject.description}
+              </p>
+
+              <div className="space-y-2 pt-2">
+                <h4 className="text-xs uppercase tracking-wider font-semibold text-[#9ca3af]">
+                  {t.highlightsLabel}
+                </h4>
+                <ul className="space-y-1.5">
+                  {activeModalProject.highlights.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-[#bbb] leading-relaxed">
+                      <CheckCircle2 className="w-4 h-4 text-[#FF6B35] shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-2">
+                <h4 className="text-xs uppercase tracking-wider font-semibold text-[#9ca3af] mb-2">
+                  {t.techLabel}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {activeModalProject.technologies.map((tech, idx) => (
+                    <span key={idx} className="px-2.5 py-1 bg-[#1c1c1c] border border-[#333] text-xs font-mono text-[#d1d5db]">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <div className="p-4 bg-[#141414] border-t border-[#333] flex items-center justify-between flex-wrap gap-2 text-xs">
-              <span className="text-[#888] font-mono text-[10px] uppercase">
+            {/* Modal Footer */}
+            <div className="p-4 bg-[#141414] border-t border-[#333] flex items-center justify-between flex-wrap gap-3 text-xs">
+              <span className="text-[#9ca3af] font-mono text-xs uppercase">
                 {activeModalProject.categoryLabel}
               </span>
-              <a
-                href={activeModalProject.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[#FF6B35] hover:underline font-semibold uppercase tracking-wider text-xs"
-              >
-                <span>Abrir repositório no GitHub</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+
+              <div className="flex items-center gap-3">
+                {activeModalProject.liveUrl && (
+                  <a
+                    href={activeModalProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FF6B35] text-[#121212] font-bold uppercase tracking-wider text-xs"
+                  >
+                    <span>{t.btnLive}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
+
+                {activeModalProject.figmaUrl && (
+                  <a
+                    href={activeModalProject.figmaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#333] bg-[#222] text-white hover:text-[#FF6B35] font-semibold uppercase tracking-wider text-xs"
+                  >
+                    <span>{t.btnFigma}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
+
+                <a
+                  href={activeModalProject.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#333] bg-[#1e1e1e] text-white hover:text-[#FF6B35] font-semibold uppercase tracking-wider text-xs"
+                >
+                  <span>{t.modalOpenGithub}</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-[#FF6B35]" />
+                </a>
+              </div>
             </div>
           </div>
         </div>

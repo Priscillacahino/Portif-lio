@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://priscillacahino.github.io/portifolio-priscilla-cahino/sitemap.xml

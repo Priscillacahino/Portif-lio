@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { PageType } from '../types';
-import { CONTACT_DATA, ACADEMIC_PROJECTS } from '../data/portfolioData';
+import { PageType, Language } from '../types';
+import { CONTACT_DATA } from '../data/portfolioData';
+import { TRANSLATIONS } from '../data/translations';
 import { 
   ArrowRight, 
   Linkedin, 
@@ -9,30 +10,35 @@ import {
   Phone, 
   MessageCircle, 
   CheckCircle2, 
-  TrendingUp, 
-  Sparkles, 
   Layers, 
   Database, 
-  Compass, 
-  Code2, 
-  GraduationCap, 
-  Quote, 
-  Copy, 
-  Check, 
   ExternalLink,
-  Bot,
-  Heart,
-  Eye,
-  Coffee
+  Bot, 
+  Coffee,
+  Copy, 
+  Check,
+  FileText,
+  Download
 } from 'lucide-react';
 
 interface AboutPageProps {
   onSelectPage: (page: PageType) => void;
+  currentLanguage: Language;
+  onOpenResume?: () => void;
+  onSelectProject?: (projectId: string) => void;
 }
 
-export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
+export const AboutPage: React.FC<AboutPageProps> = ({ 
+  onSelectPage, 
+  currentLanguage,
+  onOpenResume,
+  onSelectProject
+}) => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+
+  const t = TRANSLATIONS[currentLanguage].about;
+  const featuredProjects = TRANSLATIONS[currentLanguage].projectsData.filter(p => p.featured);
 
   const copyText = (text: string, type: 'email' | 'phone') => {
     navigator.clipboard.writeText(text);
@@ -45,7 +51,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
     }
   };
 
-  const featuredProjects = ACADEMIC_PROJECTS.filter(p => p.featured);
+  const pillarIcons = [
+    <CheckCircle2 key="cs" className="w-4 h-4 text-[#FF6B35] shrink-0" />,
+    <Database key="db" className="w-4 h-4 text-[#FF6B35] shrink-0" />,
+    <Layers key="ux" className="w-4 h-4 text-[#FF6B35] shrink-0" />,
+    <Bot key="ai" className="w-4 h-4 text-[#FF6B35] shrink-0" />
+  ];
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-16">
@@ -53,19 +64,19 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
       <section className="relative overflow-hidden pt-4 sm:pt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Main Editorial Hero Card - Homogeneous & Balanced Layout */}
+          {/* Main Editorial Hero Card */}
           <div className="border border-[#333] bg-[#181818] overflow-hidden shadow-2xl">
             
             {/* Top Bar with Badge */}
             <div className="bg-[#141414] border-b border-[#333] px-6 sm:px-10 py-3.5 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <span className="w-2 h-2 bg-[#FF6B35]"></span>
-                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-mono text-[#FF6B35] font-semibold">
-                  Transição para Tecnologia • Customer Experience (CS/CX) & ADS
+                <span className="text-xs uppercase tracking-[0.2em] font-mono text-[#FF6B35] font-semibold">
+                  {t.topBadge}
                 </span>
               </div>
-              <span className="text-[10px] uppercase font-mono tracking-widest text-[#666] hidden sm:block">
-                João Pessoa - PB
+              <span className="text-xs uppercase font-mono tracking-widest text-[#9ca3af] hidden sm:block">
+                {t.location}
               </span>
             </div>
 
@@ -81,6 +92,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                     <img
                       src="/priscilla-cahino-perfil.png"
                       alt="Priscilla Cahino - Retrato Profissional"
+                      width={480}
+                      height={560}
                       className="w-full h-auto object-cover max-h-[380px] sm:max-h-[420px] object-top transition-transform duration-500 group-hover:scale-102"
                       referrerPolicy="no-referrer"
                       loading="eager"
@@ -93,8 +106,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
 
                   {/* Perfil Profissional logo abaixo da imagem */}
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#888] block mb-2">
-                      Perfil Profissional
+                    <span className="text-xs uppercase tracking-[0.25em] font-mono text-[#9ca3af] block mb-2 font-semibold">
+                      {t.profileEyebrow}
                     </span>
                     <h1 className="text-4xl sm:text-5xl font-serif-artistic italic mb-1 leading-none text-[#f5f5f5]">
                       Priscilla
@@ -103,19 +116,19 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                       Cahino
                     </h1>
                     
-                    {/* Hallmark Artistic Accent Divider */}
+                    {/* Artistic Accent Divider */}
                     <div className="h-[2px] w-20 bg-[#FF6B35] mb-5"></div>
                     
                     <div className="space-y-2">
-                      <p className="text-xs uppercase tracking-[0.18em] text-[#eee] font-semibold flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#FF6B35]"></span>
-                        Customer Experience (CS/CX)
+                      <p className="text-xs uppercase tracking-[0.16em] text-[#f5f5f5] font-semibold flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-[#FF6B35] shrink-0"></span>
+                        {t.roles[0]}
                       </p>
-                      <p className="text-xs uppercase tracking-[0.18em] text-[#aaa]">
-                        Data Analysis & SQL Specialist
+                      <p className="text-xs uppercase tracking-[0.16em] text-[#d1d5db]">
+                        {t.roles[1]}
                       </p>
-                      <p className="text-xs uppercase tracking-[0.18em] text-[#888]">
-                        UX/UI Designer & ADS Student
+                      <p className="text-xs uppercase tracking-[0.16em] text-[#9ca3af]">
+                        {t.roles[2]}
                       </p>
                     </div>
                   </div>
@@ -123,14 +136,29 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
 
                 {/* Primary Action Buttons */}
                 <div className="pt-6 border-t border-[#2a2a2a] space-y-3">
-                  <button
-                    id="btn-hero-projects"
-                    onClick={() => onSelectPage('projects')}
-                    className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-[#FF6B35] hover:bg-[#ff7f4d] text-[#121212] font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md"
-                  >
-                    <span>Ver Projetos Acadêmicos</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <button
+                      id="btn-hero-projects"
+                      onClick={() => onSelectPage('projects')}
+                      className="flex items-center justify-center gap-2 px-4 py-3.5 bg-[#FF6B35] hover:bg-[#ff7f4d] text-[#121212] font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md"
+                    >
+                      <span>{t.btnProjects}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+
+                    {onOpenResume && (
+                      <button
+                        id="btn-hero-resume"
+                        type="button"
+                        onClick={onOpenResume}
+                        className="flex items-center justify-center gap-2 px-4 py-3.5 border border-[#FF6B35] hover:bg-[#FF6B35] text-[#FF6B35] hover:text-[#121212] font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-sm"
+                        title={t.btnResume}
+                      >
+                        <FileText className="w-4 h-4" />
+                        <span>{t.btnResume}</span>
+                      </button>
+                    )}
+                  </div>
 
                   <div className="grid grid-cols-2 gap-2.5">
                     <a
@@ -138,10 +166,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                       href={CONTACT_DATA.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-3 border border-[#FF6B35]/40 text-[#FF6B35] bg-[#FF6B35]/10 hover:bg-[#FF6B35] hover:text-[#121212] font-semibold text-xs uppercase tracking-wider transition-colors"
+                      className="flex items-center justify-center gap-2 px-4 py-3 border border-[#FF6B35]/50 text-[#FF6B35] bg-[#FF6B35]/10 hover:bg-[#FF6B35] hover:text-[#121212] font-semibold text-xs uppercase tracking-wider transition-colors"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      <span>WhatsApp</span>
+                      <span>{t.btnWhatsapp}</span>
                     </a>
 
                     <a
@@ -149,66 +177,66 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                       href={CONTACT_DATA.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-3 border border-[#333] hover:border-[#FF6B35] text-[#eee] hover:text-white bg-[#1f1f1f] font-semibold text-xs uppercase tracking-wider transition-colors"
+                      className="flex items-center justify-center gap-2 px-4 py-3 border border-[#333] hover:border-[#FF6B35] text-[#f5f5f5] hover:text-white bg-[#1f1f1f] font-semibold text-xs uppercase tracking-wider transition-colors"
                     >
                       <Linkedin className="w-4 h-4 text-[#0077B5]" />
-                      <span>LinkedIn</span>
+                      <span>{t.btnLinkedin}</span>
                     </a>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: Apresentação Profissional do lado da imagem e do perfil */}
+              {/* Right Column: Apresentação Profissional */}
               <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 bg-[#181818] flex flex-col justify-between space-y-8">
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-2">
-                    <span className="text-[11px] uppercase tracking-[0.4em] text-[#FF6B35] font-bold">
-                      Apresentação Profissional
+                    <span className="text-xs uppercase tracking-[0.3em] text-[#FF6B35] font-bold font-mono">
+                      {t.presentationEyebrow}
                     </span>
                   </div>
 
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif-artistic italic text-white leading-tight">
-                    Conectando experiência, pessoas e tecnologia.
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-artistic italic text-white leading-snug">
+                    {t.presentationHeadline}
                   </h2>
 
-                  <div className="space-y-5 text-[#bbb] text-base sm:text-lg leading-relaxed font-light">
+                  <div className="space-y-5 text-[#d1d5db] text-base sm:text-lg leading-relaxed font-light">
                     <p>
-                      Minha atuação reúne relacionamento com clientes, visão de processos e resolução de problemas, agora ampliada por conhecimentos em Análise de Dados, UX/UI, desenvolvimento de sistemas e Inteligência Artificial.
+                      {t.presentationP1}
                     </p>
                     <p>
-                      Busco transformar essa combinação em soluções mais claras, funcionais e orientadas às necessidades de quem utiliza produtos e serviços.
+                      {t.presentationP2}
                     </p>
                   </div>
                 </div>
 
                 {/* Direct Contact Bar */}
-                <div className="p-4 sm:p-5 border border-[#333] bg-[#141414] flex flex-wrap items-center justify-between gap-3 text-xs text-[#888]">
+                <div className="p-4 sm:p-5 border border-[#333] bg-[#141414] flex flex-wrap items-center justify-between gap-3 text-xs text-[#9ca3af]">
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-[#FF6B35] shrink-0" />
-                    <span className="font-mono text-[#ddd] text-xs sm:text-sm">{CONTACT_DATA.email}</span>
+                    <span className="font-mono text-[#f5f5f5] text-xs sm:text-sm">{CONTACT_DATA.email}</span>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => copyText(CONTACT_DATA.email, 'email')}
-                      className="text-[#aaa] hover:text-[#FF6B35] transition-colors flex items-center gap-1 cursor-pointer"
+                      className="text-[#d1d5db] hover:text-[#FF6B35] transition-colors flex items-center gap-1 cursor-pointer"
                     >
                       {copiedEmail ? (
                         <span className="text-[#FF6B35] flex items-center gap-1 font-semibold">
-                          <Check className="w-3.5 h-3.5" /> Copiado!
+                          <Check className="w-3.5 h-3.5" /> {t.copied}
                         </span>
                       ) : (
-                        <span className="flex items-center gap-1 font-mono text-[11px] uppercase tracking-wider">
-                          <Copy className="w-3 h-3" /> Copiar E-mail
+                        <span className="flex items-center gap-1 font-mono text-xs uppercase tracking-wider">
+                          <Copy className="w-3.5 h-3.5" /> {t.copyEmail}
                         </span>
                       )}
                     </button>
                     <span className="text-[#444]">|</span>
                     <a
                       href={`tel:${CONTACT_DATA.phone}`}
-                      className="text-[#aaa] hover:text-[#FF6B35] flex items-center gap-1 font-mono text-[11px]"
+                      className="text-[#d1d5db] hover:text-[#FF6B35] flex items-center gap-1 font-mono text-xs"
                     >
-                      <Phone className="w-3 h-3 text-[#FF6B35]" />
+                      <Phone className="w-3.5 h-3.5 text-[#FF6B35]" />
                       <span>{CONTACT_DATA.phoneFormatted}</span>
                     </a>
                   </div>
@@ -217,57 +245,29 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
 
             </div>
 
-            {/* Bottom Shelf: 4 Core Capabilities Distributed Evenly Across the Full Width */}
+            {/* Bottom Shelf: 4 Core Capabilities Distributed Evenly */}
             <div className="border-t border-[#333] bg-[#141414] p-6 sm:p-8 lg:p-10">
               <div className="mb-4 flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#888]">
-                  Pilares de Atuação & Competências
+                <span className="text-xs uppercase tracking-[0.25em] font-mono text-[#9ca3af] font-semibold">
+                  {t.pillarsEyebrow}
                 </span>
-                <span className="text-[10px] font-mono text-[#FF6B35]">
-                  04 Áreas Estratégicas
+                <span className="text-xs font-mono text-[#FF6B35] font-semibold">
+                  {t.pillarsBadge}
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="p-4 border border-[#2a2a2a] hover:border-[#FF6B35] bg-[#181818] transition-colors flex flex-col justify-between space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-white">
-                    <CheckCircle2 className="w-4 h-4 text-[#FF6B35] shrink-0" />
-                    <span>Customer Success & CX</span>
+                {t.pillars.map((pillar, idx) => (
+                  <div key={idx} className="p-4 border border-[#2a2a2a] hover:border-[#FF6B35] bg-[#181818] transition-colors flex flex-col justify-between space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-white">
+                      {pillarIcons[idx]}
+                      <span>{pillar.title}</span>
+                    </div>
+                    <p className="text-xs text-[#d1d5db] font-light leading-relaxed">
+                      {pillar.description}
+                    </p>
                   </div>
-                  <p className="text-xs text-[#888] font-light leading-relaxed">
-                    18+ anos de experiência em relacionamento com clientes, processos, atendimento e resolução de demandas.
-                  </p>
-                </div>
-
-                <div className="p-4 border border-[#2a2a2a] hover:border-[#FF6B35] bg-[#181818] transition-colors flex flex-col justify-between space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-white">
-                    <Database className="w-4 h-4 text-[#FF6B35] shrink-0" />
-                    <span>Análise de Dados & SQL</span>
-                  </div>
-                  <p className="text-xs text-[#888] font-light leading-relaxed">
-                    Projetos acadêmicos utilizando SQL, MySQL, Python e Power BI.
-                  </p>
-                </div>
-
-                <div className="p-4 border border-[#2a2a2a] hover:border-[#FF6B35] bg-[#181818] transition-colors flex flex-col justify-between space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-white">
-                    <Layers className="w-4 h-4 text-[#FF6B35] shrink-0" />
-                    <span>UX/UI & Usabilidade</span>
-                  </div>
-                  <p className="text-xs text-[#888] font-light leading-relaxed">
-                    Prototipação no Figma, fluxos de usuário, usabilidade e design de interfaces.
-                  </p>
-                </div>
-
-                <div className="p-4 border border-[#2a2a2a] hover:border-[#FF6B35] bg-[#181818] transition-colors flex flex-col justify-between space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-white">
-                    <Bot className="w-4 h-4 text-[#FF6B35] shrink-0" />
-                    <span>Inteligência Artificial</span>
-                  </div>
-                  <p className="text-xs text-[#888] font-light leading-relaxed">
-                    Uso da IA como apoio aos estudos, ideação, desenvolvimento e produtividade.
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -276,49 +276,49 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
         </div>
       </section>
 
-      {/* Main Narrative Section: "Sobre mim" (Exact Prompt Text) */}
+      {/* Main Narrative Section: "Sobre mim" */}
       <section id="sobre-mim" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="border border-[#333] bg-[#181818] p-6 sm:p-12 lg:p-14 shadow-xl relative overflow-hidden">
           
           <div className="text-center max-w-2xl mx-auto border-b border-[#2e2e2e] pb-8 mb-10">
-            <h2 className="text-[10px] uppercase tracking-[0.4em] text-[#FF6B35] mb-2 font-bold">
-              Trajetória & Filosofia
+            <span className="text-xs uppercase tracking-[0.3em] text-[#FF6B35] mb-2 font-bold block font-mono">
+              {t.storyEyebrow}
+            </span>
+            <h2 className="font-serif-artistic italic text-3xl sm:text-4xl text-white font-normal mb-3">
+              {t.storyTitle}
             </h2>
-            <h3 className="font-serif-artistic italic text-3xl sm:text-4xl text-white font-normal mb-3">
-              Sobre mim
-            </h3>
             <div className="inline-block h-[1px] w-16 bg-[#FF6B35] mb-3"></div>
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#888] font-mono">
-                Priscilla Cahino • CS/CX & ADS
+              <span className="text-xs uppercase tracking-widest text-[#9ca3af] font-mono font-medium">
+                {t.storyBadge}
               </span>
             </div>
           </div>
 
           {/* Text Content centered on the page */}
-          <div className="max-w-3xl mx-auto space-y-6 text-[#bbb] text-base sm:text-[17px] leading-relaxed font-light">
+          <div className="max-w-3xl mx-auto space-y-6 text-[#d1d5db] text-base sm:text-[17px] leading-relaxed font-light">
             
-            <div className="p-6 border border-[#333] bg-[#141414] text-[#eee]">
+            <div className="p-6 border border-[#333] bg-[#141414] text-[#f5f5f5]">
               <p className="leading-relaxed italic font-serif-artistic text-lg text-center sm:text-left">
-                Sou profissional com mais de dezoito anos de experiência nos segmentos bancário e imobiliário. Foi nesse ambiente que construí grande parte da minha trajetória profissional, adquirindo experiência com atendimento, relacionamento com clientes, processos financeiros e resolução de demandas.
+                {t.storyHighlight}
               </p>
             </div>
 
             <p>
-              Com o passar dos anos e acompanhando as transformações do mercado e os avanços tecnológicos, comecei a perceber que existiam possibilidades além desse segmento. Isso despertou em mim a vontade de aprender coisas novas, ampliar meus conhecimentos e construir um novo caminho profissional.
+              {t.storyP1}
             </p>
 
             <p>
-              Durante minha experiência, desenvolvi uma visão muito voltada para a jornada do cliente, organização de processos e resolução de problemas, buscando tornar o atendimento cada vez mais claro, ágil e eficiente.
+              {t.storyP2}
             </p>
 
             <p>
-              Atualmente, estou ampliando minha atuação para a área de tecnologia, conectando minha experiência em Customer Success e Customer Experience (CS/CX) aos conhecimentos que venho desenvolvendo em análise de dados, UX/UI, desenvolvimento de sistemas e Inteligência Artificial.
+              {t.storyP3}
             </p>
 
             <div className="p-5 border border-[#333] hover:border-[#FF6B35] bg-[#141414] transition-colors">
               <p className="text-white font-normal">
-                Tenho interesse especial em compreender como dados, tecnologia e experiência do usuário podem contribuir para melhorar processos, apoiar a tomada de decisão e transformar ideias em soluções mais simples, úteis e funcionais.
+                {t.storyQuoteBox}
               </p>
             </div>
 
@@ -328,11 +328,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                 <Coffee className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-serif-artistic italic text-white mb-1">
-                  Além do trabalho e da tecnologia
-                </h4>
-                <p className="text-sm text-[#aaa] leading-relaxed font-light">
-                  Mas nem tudo é trabalho e tecnologia. Nos momentos livres, gosto de aproveitar uma praia, assistir a um bom filme com pipoca e simplesmente observar o que acontece ao meu redor. Sou uma pessoa bastante observadora e acredito que observar também é uma forma de aprender: primeiro ouvir, depois entender e, só então, pensar no que podemos construir ou melhorar.
+                <h3 className="text-sm font-serif-artistic italic text-white mb-1">
+                  {t.personalTitle}
+                </h3>
+                <p className="text-sm text-[#d1d5db] leading-relaxed font-light">
+                  {t.personalText}
                 </p>
               </div>
             </div>
@@ -343,17 +343,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                 <Bot className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-serif-artistic italic text-white mb-1">
-                  Inteligência Artificial como apoio e aceleração
-                </h4>
-                <p className="text-sm text-[#aaa] leading-relaxed font-light">
-                  E sim, utilizo bastante a Inteligência Artificial como apoio no meu dia a dia, seja nos estudos, na organização de ideias, na criação de textos ou no desenvolvimento dos meus projetos. Acredito que a IA veio para somar e que, quando combinada com conhecimento, curiosidade e dedicação, pode nos ajudar a criar muitas coisas interessantes.
+                <h3 className="text-sm font-serif-artistic italic text-white mb-1">
+                  {t.aiTitle}
+                </h3>
+                <p className="text-sm text-[#d1d5db] leading-relaxed font-light">
+                  {t.aiText}
                 </p>
               </div>
             </div>
 
-            <p className="text-[#888] font-light">
-              Este espaço também é uma forma de compartilhar um pouco dessa nova etapa: quem sou, o que estou aprendendo e alguns dos projetos que venho desenvolvendo e publicando no GitHub.
+            <p className="text-[#9ca3af] font-light">
+              {t.storyClosing}
             </p>
 
           </div>
@@ -365,14 +365,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8 pb-4 border-b border-[#2e2e2e]">
           <div>
-            <h2 className="text-[10px] uppercase tracking-[0.4em] text-[#FF6B35] mb-2 font-bold">
-              Projetos Acadêmicos & Tech
+            <span className="text-xs uppercase tracking-[0.3em] text-[#FF6B35] mb-2 font-bold block font-mono">
+              {t.featuredEyebrow}
+            </span>
+            <h2 className="font-serif-artistic italic text-3xl sm:text-4xl text-white font-normal">
+              {t.featuredTitle}
             </h2>
-            <h3 className="font-serif-artistic italic text-3xl sm:text-4xl text-white font-normal">
-              Destaques Selecionados
-            </h3>
-            <p className="text-[#888] text-xs sm:text-sm mt-1 font-light">
-              Projetos desenvolvidos durante minha formação e estudos em Análise e Desenvolvimento de Sistemas.
+            <p className="text-[#9ca3af] text-xs sm:text-sm mt-1 font-light">
+              {t.featuredSubtitle}
             </p>
           </div>
 
@@ -381,111 +381,120 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
             onClick={() => onSelectPage('projects')}
             className="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-semibold text-[#FF6B35] hover:text-[#ff7f4d] transition-colors group cursor-pointer"
           >
-            <span>Ver todos os projetos detalhados</span>
+            <span>{t.viewAllProjects}</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* 3 Featured Projects Grid */}
+        {/* Featured Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredProjects.map((project, idx) => (
             <div
               key={project.id}
-              className="border border-[#333] hover:border-[#FF6B35] bg-[#181818] overflow-hidden flex flex-col transition-all group"
+              onClick={() => {
+                if (onSelectProject) {
+                  onSelectProject(project.id);
+                } else {
+                  onSelectPage('projects');
+                }
+              }}
+              className="border border-[#333] hover:border-[#FF6B35] bg-[#181818] overflow-hidden flex flex-col justify-between transition-all group cursor-pointer shadow-md"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && onSelectPage('projects')}
+              aria-label={`Ver detalhes do projeto ${project.title}`}
             >
-              {project.image && (
-                <div className="aspect-[16/9] w-full overflow-hidden bg-[#141414] relative border-b border-[#2a2a2a]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover object-top grayscale contrast-105 group-hover:grayscale-0 transition-all duration-300"
-                  />
-                  <div className="absolute top-2.5 left-2.5">
-                    <span className="px-2 py-0.5 bg-[#121212]/90 text-[10px] font-mono text-[#FF6B35] uppercase tracking-wider border border-[#333]">
-                      {project.categoryLabel}
-                    </span>
+              <div>
+                {project.image && (
+                  <div className="aspect-[16/9] w-full overflow-hidden bg-[#141414] relative border-b border-[#2a2a2a]">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      decoding="async"
+                      width={480}
+                      height={270}
+                      className="w-full h-full object-cover object-top grayscale contrast-105 group-hover:grayscale-0 transition-all duration-300"
+                    />
+                    <div className="absolute top-2.5 left-2.5">
+                      <span className="px-2 py-0.5 bg-[#121212]/90 text-xs font-mono text-[#FF6B35] uppercase tracking-wider border border-[#333]">
+                        {project.categoryLabel}
+                      </span>
+                    </div>
+                    <div className="absolute top-2.5 right-2.5">
+                      <span className="text-xs font-mono text-[#d1d5db] bg-[#121212]/80 px-2 py-0.5 border border-[#333]">
+                        0{idx + 1}
+                      </span>
+                    </div>
                   </div>
-                  <div className="absolute top-2.5 right-2.5">
-                    <span className="text-[10px] font-mono text-[#888] bg-[#121212]/80 px-1.5 py-0.5">
-                      0{idx + 1}
-                    </span>
-                  </div>
-                </div>
-              )}
+                )}
 
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-2">
+                <div className="p-6 space-y-3">
                   <h3 className="font-serif-artistic italic text-xl text-white group-hover:text-[#FF6B35] transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-xs uppercase tracking-wider text-[#777] font-semibold">
+                  <p className="text-xs uppercase tracking-wider text-[#FF6B35] font-semibold">
                     {project.subtitle}
                   </p>
-                  <p className="text-xs text-[#aaa] font-light line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-[#d1d5db] font-light line-clamp-3 leading-relaxed">
                     {project.summary}
                   </p>
                 </div>
+              </div>
 
-                <div className="pt-3 border-t border-[#2a2a2a] flex items-center justify-between">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.technologies.slice(0, 3).map((tech, i) => (
-                      <span key={i} className="text-[10px] font-mono px-2 py-0.5 bg-[#141414] border border-[#2a2a2a] text-[#888]">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs uppercase tracking-wider font-semibold text-[#FF6B35] hover:text-white flex items-center gap-1 shrink-0"
-                    title="Ver no GitHub"
-                  >
-                    <span>GitHub</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
+              <div className="p-6 pt-3 border-t border-[#2a2a2a] flex items-center justify-between">
+                <div className="flex flex-wrap gap-1.5">
+                  {project.technologies.slice(0, 3).map((tech, i) => (
+                    <span key={i} className="text-xs font-mono px-2 py-0.5 bg-[#141414] border border-[#2a2a2a] text-[#9ca3af]">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
+
+                <span className="text-xs uppercase tracking-wider font-semibold text-[#FF6B35] group-hover:underline flex items-center gap-1 shrink-0">
+                  <span>Ver Detalhes</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </span>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 1. Filosofia & Propósito (Swapped to come before Contato & Conexão) */}
+      {/* Filosofia & Propósito */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden border border-[#333] hover:border-[#FF6B35] bg-[#141414] p-8 sm:p-12 transition-colors">
           <div className="max-w-3xl">
             <div className="h-[2px] w-12 bg-[#FF6B35] mb-4"></div>
-            <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#FF6B35] block mb-2">
-              Filosofia & Propósito
+            <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#FF6B35] block mb-2 font-mono">
+              {t.quoteEyebrow}
             </span>
             <blockquote className="text-xl sm:text-2xl font-serif-artistic italic text-[#eee] font-normal leading-relaxed mb-3">
-              “Oportunidades multiplicam-se à medida que são agarradas.”
+              {t.quoteText}
             </blockquote>
             <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#FF6B35]">
-              Sun Tzu — <span className="text-[#aaa] font-light">A Arte da Guerra</span>
+              {t.quoteAuthor}
             </p>
-            <p className="mt-2 text-xs text-[#666] italic font-light">
-              Texto escrito por mim, com apoio da IA na revisão.
+            <p className="mt-2 text-xs text-[#9ca3af] italic font-light">
+              {t.quoteNote}
             </p>
           </div>
         </div>
       </section>
 
-      {/* 2. Contato & Conexão (Positioned right after Filosofia) */}
+      {/* Contato & Conexão */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="border border-[#333] bg-[#161616] p-8 sm:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-3">
-              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#FF6B35]">
-                Contato & Conexão
+              <span className="text-xs uppercase tracking-[0.3em] font-bold text-[#FF6B35] block font-mono">
+                {t.ctaEyebrow}
               </span>
               <h2 className="font-serif-artistic italic text-2xl sm:text-3xl text-white font-normal">
-                Aberta a novas oportunidades, aprendizados e conexões profissionais
+                {t.ctaTitle}
               </h2>
-              <p className="text-[#aaa] text-sm leading-relaxed max-w-2xl font-light">
-                Seja para posições em Customer Success/CX, oportunidades na área de Tecnologia e Análise de Dados ou projetos colaborativos, estou à disposição para conversar.
+              <p className="text-[#d1d5db] text-sm leading-relaxed max-w-2xl font-light">
+                {t.ctaDescription}
               </p>
             </div>
 
@@ -526,13 +535,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onSelectPage }) => {
                   <span>GitHub</span>
                 </a>
 
-                <a
-                  href={`mailto:${CONTACT_DATA.email}`}
-                  className="flex items-center justify-center gap-2 py-3 px-4 border border-[#333] hover:border-[#FF6B35] bg-[#1f1f1f] text-[#eee] font-semibold text-xs uppercase tracking-wider transition-colors"
-                >
-                  <Mail className="w-4 h-4 text-[#FF6B35]" />
-                  <span>E-mail</span>
-                </a>
+                {onOpenResume && (
+                  <button
+                    id="btn-cta-resume"
+                    type="button"
+                    onClick={onOpenResume}
+                    className="flex items-center justify-center gap-2 py-3 px-4 border border-[#FF6B35]/70 bg-[#1f1f1f] text-[#FF6B35] hover:bg-[#FF6B35] hover:text-[#121212] font-semibold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>{t.btnResume || 'Ver Currículo Completo'}</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>
